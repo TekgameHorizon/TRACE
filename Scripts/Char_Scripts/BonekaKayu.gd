@@ -5,8 +5,8 @@ var SPEED = 45
 var player_chase = false
 var player = null
 var is_attacking = false
-var ATTACK_DISTANCE = 15 # Jarak untuk memasuki serangan
-var START_DISTANCE = 9  # Jarak berhenti mengejar player
+var ATTACK_DISTANCE = 20 # Jarak untuk memasuki serangan
+var START_DISTANCE = 14  # Jarak berhenti mengejar player
 var start_position = Vector2()  # Posisi awal enemy
 var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
 
