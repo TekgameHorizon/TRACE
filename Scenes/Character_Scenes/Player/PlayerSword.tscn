@@ -24,7 +24,8 @@ scale = Vector2(0.59375, 0.59375)
 sprite_frames = ExtResource("2_tkiyo")
 animation = &"Attack belakang"
 autoplay = "Move depan"
-frame_progress = 0.40167
+frame = 5
+frame_progress = 1.0
 offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -40,6 +41,9 @@ shape = SubResource("CircleShape2D_8mo4a")
 [node name="CoolDown" type="Timer" parent="."]
 
 [node name="DamageTimer" type="Timer" parent="."]
+
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 0.76
 
 [node name="WalkSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6fybt")
