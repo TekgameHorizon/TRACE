@@ -24,6 +24,7 @@ animation = &"attack"
 frame_progress = 0.064105
 
 [node name="attackanim" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(1, -2)
 scale = Vector2(0.734375, 0.734375)
 sprite_frames = ExtResource("2_ioapi")
