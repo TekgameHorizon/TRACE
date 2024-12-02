@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bemcvb8ag76mi"
+path="res://.godot/imported/Movement.wav-4247594bb9fbc7efd0b4a0fd1c75d65b.sample"
+
+[deps]
+
+source_file="res://Audio/Sfx/Enemy/Boss/WeweGombel/Movement/Movement Ready to Attack/Ammo2/Movement.wav"
+dest_files=["res://.godot/imported/Movement.wav-4247594bb9fbc7efd0b4a0fd1c75d65b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

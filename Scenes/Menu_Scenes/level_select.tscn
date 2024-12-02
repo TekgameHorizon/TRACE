@@ -1,0 +1,98 @@
+[ext_resource type="Script" path="res://Scripts/Menu/level_select.gd" id="1_tgeab"]
+[ext_resource type="Texture2D" uid="uid://obsxr4efhrie" path="res://Asset/Menu/Level/laut.jpg" id="2_l7up7"]
+[ext_resource type="AudioStream" uid="uid://cuvbpa6rb5pj4" path="res://Audio/Music/OverWorld/OverWorld_1.wav" id="2_vgm7x"]
+[ext_resource type="Texture2D" uid="uid://clebjox6ttjdx" path="res://Asset/Menu/Level/Pulau Sumatera.png" id="3_p1j7c"]
+
+[sub_resource type="SystemFont" id="SystemFont_vpwsr"]
+font_names = PackedStringArray("Bernard MT")
+font_weight = 600
+
+[node name="Map" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tgeab")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vgm7x")
+autoplay = true
+
+[node name="Laut" type="Sprite2D" parent="."]
+position = Vector2(577.5, 324)
+scale = Vector2(5.9433, 3.53261)
+texture = ExtResource("2_l7up7")
+metadata/_edit_lock_ = true
+
+[node name="PulauSumatera" type="Sprite2D" parent="."]
+position = Vector2(671, 259)
+rotation = -0.801083
+scale = Vector2(4.01703, 4.09339)
+texture = ExtResource("3_p1j7c")
+
+[node name="Judul Game" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.0
+offset_right = 81.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.643137, 0, 0.941176, 1)
+theme_override_colors/font_shadow_color = Color(0.716491, 0.354532, 0.857807, 1)
+theme_override_colors/font_outline_color = Color(0.962046, 0.755782, 0.886215, 1)
+theme_override_fonts/font = SubResource("SystemFont_vpwsr")
+theme_override_font_sizes/font_size = 50
+text = "MAP Sumatera"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -162.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "Back"
+
+[node name="Level 1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 261.0
+offset_right = 362.0
+offset_bottom = 298.0
+toggle_mode = true
+text = "Level 1"
+
+[node name="Level 2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 547.0
+offset_top = 270.0
+offset_right = 636.0
+offset_bottom = 319.0
+text = "Level 2"
+
+[node name="Level 3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 763.0
+offset_top = 355.0
+offset_right = 868.0
+offset_bottom = 404.0
+text = "Level 3"
+
+[connection signal="pressed" from="VBoxContainer/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Level 1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Level 2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="Level 3" to="." method="_on_level_3_pressed"]

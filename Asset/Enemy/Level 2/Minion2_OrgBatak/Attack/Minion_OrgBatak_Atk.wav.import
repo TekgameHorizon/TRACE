@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bquetgavkd78"
+path="res://.godot/imported/Minion_OrgBatak_Atk.wav-0ddcc41bd8c734af823099ffec3d1e6f.sample"
+
+[deps]
+
+source_file="res://Asset/Enemy/Level 2/Minion2_OrgBatak/Attack/Minion_OrgBatak_Atk.wav"
+dest_files=["res://.godot/imported/Minion_OrgBatak_Atk.wav-0ddcc41bd8c734af823099ffec3d1e6f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

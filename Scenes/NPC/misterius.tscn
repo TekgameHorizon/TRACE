@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwc3k17nlkw4f"]
+
+[ext_resource type="SpriteFrames" uid="uid://cv3pltlysjl3p" path="res://AnimationSprite/NPC/Misterius.tres" id="1_1lmbf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dj3m1"]
+radius = 6.0
+height = 24.0
+
+[node name="Misterius" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_1lmbf")
+animation = &"Interaction"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dj3m1")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cvo8d7k5lvs7q"
+path="res://.godot/imported/Death.wav-ca2260f7c6521422f35b1893d4a77711.sample"
+
+[deps]
+
+source_file="res://Asset/Enemy/Level 2/Minion2_OrgBatak/Mati/Death.wav"
+dest_files=["res://.godot/imported/Death.wav-ca2260f7c6521422f35b1893d4a77711.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

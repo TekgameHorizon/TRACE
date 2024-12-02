@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqwcmsyttbl76"]
+
+[ext_resource type="SpriteFrames" uid="uid://c4lc410y8wq3m" path="res://AnimationSprite/NPC/BlackSimth.tres" id="1_h8gda"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dhj70"]
+radius = 7.0
+height = 26.0
+
+[node name="BlackSimth" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_h8gda")
+animation = &"Interaction"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dhj70")

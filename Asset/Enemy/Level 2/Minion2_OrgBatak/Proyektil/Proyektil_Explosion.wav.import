@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://yxkei1nwt7dq"
+path="res://.godot/imported/Proyektil_Explosion.wav-7b5cb1214e47af01e53151a29357be59.sample"
+
+[deps]
+
+source_file="res://Asset/Enemy/Level 2/Minion2_OrgBatak/Proyektil/Proyektil_Explosion.wav"
+dest_files=["res://.godot/imported/Proyektil_Explosion.wav-7b5cb1214e47af01e53151a29357be59.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

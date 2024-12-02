@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d0oemyobejj6n"
+path="res://.godot/imported/BombCharge_Explode.wav-74d2c4da65e6fba2ebf598ce2bdb24ad.sample"
+
+[deps]
+
+source_file="res://Asset/Enemy/Level 3/Wewegombel/Proyektil/BombCharge/ChargeBomb/ChargeBomb_Explode/BombCharge_Explode.wav"
+dest_files=["res://.godot/imported/BombCharge_Explode.wav-74d2c4da65e6fba2ebf598ce2bdb24ad.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

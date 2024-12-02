@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dws633rjxqvui"]
+
+[ext_resource type="Script" path="res://Scripts/Char_Scripts/BeguGanjar.gd" id="1_4tg1g"]
+[ext_resource type="SpriteFrames" uid="uid://slhhc8x4j6ws" path="res://AnimationSprite/Level 1/BeguGanjar/BeguGanjar.tres" id="2_yigim"]
+[ext_resource type="AudioStream" uid="uid://co3cxh4al1uob" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Idle/Boss_BeguGanjar_IdleFixed.wav" id="3_usrtg"]
+
+[node name="BeguBanjar" type="CharacterBody2D"]
+script = ExtResource("1_4tg1g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_yigim")
+animation = &"Move kiri"
+frame_progress = 0.809822
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="EnemyHitbox"]
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="IdleSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_usrtg")

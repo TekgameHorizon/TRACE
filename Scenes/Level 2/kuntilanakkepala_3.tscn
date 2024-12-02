@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dti7qafloqpqp"]
+
+[ext_resource type="SpriteFrames" uid="uid://cewm6biqqcj8w" path="res://AnimationSprite/Level 2/Kuntilanakkepala3.tres" id="1_yx0k8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k85xm"]
+radius = 7.0
+height = 40.0
+
+[node name="Kuntilanakkepala3" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_yx0k8")
+animation = &"Attack depan"
+frame_progress = 0.337698
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_k85xm")

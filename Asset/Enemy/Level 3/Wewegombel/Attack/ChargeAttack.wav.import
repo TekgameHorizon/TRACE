@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2d40vjk61hfa"
+path="res://.godot/imported/ChargeAttack.wav-8427818f0a7380b9f9d615cc21c79bb4.sample"
+
+[deps]
+
+source_file="res://Asset/Enemy/Level 3/Wewegombel/Attack/ChargeAttack.wav"
+dest_files=["res://.godot/imported/ChargeAttack.wav-8427818f0a7380b9f9d615cc21c79bb4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

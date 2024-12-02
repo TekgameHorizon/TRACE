@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6shxw105gpre"]
+
+[ext_resource type="SpriteFrames" uid="uid://d2e6swmp433gj" path="res://AnimationSprite/Player/Tombak/Tombak.tres" id="1_xjf3i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gk2m2"]
+radius = 6.0
+height = 26.0
+
+[node name="PlayerTombak" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 2)
+sprite_frames = ExtResource("1_xjf3i")
+animation = &"Idle depan"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_gk2m2")

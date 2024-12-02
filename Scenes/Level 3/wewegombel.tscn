@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv6jrs12wnwve"]
+
+[ext_resource type="SpriteFrames" uid="uid://bgl0g64lymqad" path="res://AnimationSprite/Level 3/Wewegombel.tres" id="1_0gmc3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m3xm3"]
+radius = 6.0
+height = 22.0
+
+[node name="Wewegombel" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_0gmc3")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_m3xm3")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://caup6lfavl2dx"]
+
+[ext_resource type="SpriteFrames" uid="uid://54430pib0m3y" path="res://AnimationSprite/Player/Kriss/Kriss.tres" id="1_u2afa"]
+[ext_resource type="AudioStream" uid="uid://boevlaiqltrsx" path="res://Sfx/Run.wav" id="2_iebar"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gv3qf"]
+radius = 5.0
+height = 14.0
+
+[node name="PlayerKriss" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_u2afa")
+animation = &"Idle depan"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 6)
+shape = SubResource("CapsuleShape2D_gv3qf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_iebar")
+pitch_scale = 1.05

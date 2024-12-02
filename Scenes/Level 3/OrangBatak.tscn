@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg2unlj0u8oa0"]
+
+[ext_resource type="Script" path="res://Scripts/Char_Scripts/OrangBatak.gd" id="1_3hc03"]
+[ext_resource type="SpriteFrames" uid="uid://1nv7vw4b2nwr" path="res://AnimationSprite/Level 3/ORGBatak.tres" id="1_usk5h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2rqn"]
+radius = 6.0
+height = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ydvex"]
+radius = 44.0454
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ofs18"]
+radius = 14.0357
+
+[node name="OrangBatak" type="CharacterBody2D"]
+script = ExtResource("1_3hc03")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_usk5h")
+animation = &"Idle depan"
+autoplay = "Idle depan"
+frame_progress = 0.271374
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_s2rqn")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_ydvex")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("CircleShape2D_ofs18")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
