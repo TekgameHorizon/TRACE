@@ -9,6 +9,7 @@ var ATTACK_DISTANCE = 20 # Jarak untuk memasuki serangan
 var START_DISTANCE = 14  # Jarak berhenti mengejar player
 var start_position = Vector2()  # Posisi awal enemy
 var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
+var enemy_health = 100
 
 func _ready():
 	# Simpan posisi awal saat game dimulai
@@ -87,3 +88,11 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 	
 func enemy():
 	pass
+
+func enemy_take_damage(amount: int):
+	enemy_health -= amount
+	print("Enemy health: " + str(enemy_health))
+	if enemy_health <= 0:
+		enemy_health = 0
+		print("Enemy has been killed")
+		queue_free()  # Hancurkan enemy jika darah habis
