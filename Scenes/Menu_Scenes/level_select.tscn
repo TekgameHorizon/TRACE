@@ -42,5 +42,13 @@ offset_bottom = 330.0
 text = "Middle
 Sumatera"
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 574.0
+offset_right = 187.0
+offset_bottom = 600.0
+text = "LOST SUMATERA"
+
 [connection signal="pressed" from="lv1" to="." method="_on_lv_1_pressed"]
 [connection signal="pressed" from="lv2" to="." method="_on_lv_2_pressed"]

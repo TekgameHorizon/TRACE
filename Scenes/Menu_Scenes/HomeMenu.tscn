@@ -41,23 +41,23 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_br1g7")
 
 [node name="title" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -531.0
-offset_top = 45.0
-offset_right = -124.0
-offset_bottom = 251.0
+anchors_preset = -1
+anchor_left = 0.0390625
+anchor_top = 0.0694444
+anchor_right = 0.392361
+anchor_bottom = 0.387346
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_6bhjm")
+metadata/_edit_use_anchors_ = true
 
 [node name="dev" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 451.0
-offset_top = 95.0
-offset_right = 582.0
-offset_bottom = 228.0
+anchor_left = 0.391493
+anchor_top = 0.146605
+anchor_right = 0.505208
+anchor_bottom = 0.351852
 theme_override_styles/panel = SubResource("StyleBoxTexture_6tv8g")
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
