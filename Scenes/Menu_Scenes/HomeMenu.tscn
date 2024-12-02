@@ -1,13 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://46d7q2rw5m1y"]
+[gd_scene load_steps=9 format=3 uid="uid://46d7q2rw5m1y"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/home_menu.gd" id="1_2q47n"]
 [ext_resource type="AudioStream" uid="uid://cuvbpa6rb5pj4" path="res://Audio/Music/OverWorld/OverWorld_1.wav" id="2_ep8ru"]
 [ext_resource type="Texture2D" uid="uid://bq38s42ja2w5q" path="res://Asset/Menu/wallpaper.png" id="2_tdj4g"]
-[ext_resource type="Texture2D" uid="uid://ehgiwuks30b1" path="res://Asset/Menu/Level/Horizone.png" id="3_wajaj"]
+[ext_resource type="Texture2D" uid="uid://cxkolk1rp1ja" path="res://Asset/Menu/judul.png" id="4_25dva"]
+[ext_resource type="Texture2D" uid="uid://ehgiwuks30b1" path="res://Asset/Menu/Horizone.png" id="5_qf1pw"]
 
-[sub_resource type="SystemFont" id="SystemFont_ihuhl"]
-font_names = PackedStringArray("Bernard MT")
-font_weight = 600
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_br1g7"]
+texture = ExtResource("2_tdj4g")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6bhjm"]
+texture = ExtResource("4_25dva")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6tv8g"]
+texture = ExtResource("5_qf1pw")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -24,69 +30,54 @@ volume_db = -12.0
 autoplay = true
 bus = &"Music"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="bg" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_br1g7")
 
-[node name="Wallpaper" type="Sprite2D" parent="MarginContainer"]
-position = Vector2(576, 324.5)
-scale = Vector2(0.6, 0.599074)
-texture = ExtResource("2_tdj4g")
-
-[node name="Horizone" type="Sprite2D" parent="MarginContainer"]
-position = Vector2(1066.88, 93.25)
-scale = Vector2(0.332164, 0.359)
-texture = ExtResource("3_wajaj")
-
-[node name="Judul Game" type="Label" parent="."]
+[node name="title" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.522
-anchor_top = 0.325
-anchor_right = 0.522
-anchor_bottom = 0.325
-offset_left = -579.344
-offset_top = -197.6
-offset_right = -285.344
-offset_bottom = -139.6
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.643137, 0, 0.941176, 1)
-theme_override_colors/font_shadow_color = Color(0.716491, 0.354532, 0.857807, 1)
-theme_override_colors/font_outline_color = Color(0.962046, 0.755782, 0.886215, 1)
-theme_override_fonts/font = SubResource("SystemFont_ihuhl")
-theme_override_font_sizes/font_size = 50
-text = "TRACE
-"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Judul Game"]
-layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 264.0
-offset_top = 232.0
-offset_right = 552.0
-offset_bottom = 333.0
+offset_left = -531.0
+offset_top = 45.0
+offset_right = -124.0
+offset_bottom = 251.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_6bhjm")
+
+[node name="dev" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 451.0
+offset_top = 95.0
+offset_right = 582.0
+offset_bottom = 228.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_6tv8g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 75.0
+offset_top = -35.0
+offset_right = 444.0
+offset_bottom = 31.0
 grow_vertical = 2
-theme_override_constants/separation = 15
+alignment = 1
 
-[node name="Start" type="Button" parent="Judul Game/VBoxContainer"]
+[node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-toggle_mode = true
-button_pressed = true
-text = "Start Game"
+text = "START"
 
-[node name="Exit" type="Button" parent="Judul Game/VBoxContainer"]
+[node name="EXIT" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Exit"
+text = "EXIT"
 
-[connection signal="pressed" from="Judul Game/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Judul Game/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/EXIT" to="." method="_on_exit_pressed"]

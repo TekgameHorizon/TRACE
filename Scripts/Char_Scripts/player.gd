@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 100
+const SPEED = 120
 const DASH_SPEED = 300
 const DASH_TIME = 0.2
 

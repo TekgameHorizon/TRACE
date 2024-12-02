@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://4k5ova2pytd"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/level_select.gd" id="1_gstwj"]
+[ext_resource type="Texture2D" uid="uid://d2u5u2jixt0gk" path="res://Asset/Menu/map.png" id="2_qi7cu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7n4mj"]
+texture = ExtResource("2_qi7cu")
+
+[node name="level_select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gstwj")
+
+[node name="map" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7n4mj")
+
+[node name="lv1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 108.0
+offset_right = 419.0
+offset_bottom = 167.0
+text = "North
+Sumatera"
+
+[node name="lv2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 271.0
+offset_right = 709.0
+offset_bottom = 330.0
+text = "Middle
+Sumatera"
+
+[connection signal="pressed" from="lv1" to="." method="_on_lv_1_pressed"]
+[connection signal="pressed" from="lv2" to="." method="_on_lv_2_pressed"]
