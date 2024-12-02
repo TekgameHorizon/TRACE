@@ -1,13 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://dws633rjxqvui"]
+[gd_scene load_steps=7 format=3 uid="uid://dws633rjxqvui"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/BeguGanjar.gd" id="1_4tg1g"]
 [ext_resource type="SpriteFrames" uid="uid://slhhc8x4j6ws" path="res://AnimationSprite/Level 1/BeguGanjar/BeguGanjar.tres" id="2_yigim"]
 [ext_resource type="AudioStream" uid="uid://co3cxh4al1uob" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Idle/Boss_BeguGanjar_IdleFixed.wav" id="3_usrtg"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3510"]
+radius = 16.0
+height = 92.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8go4r"]
+radius = 76.1052
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kdliw"]
+radius = 15.0
+height = 92.0
+
 [node name="BeguBanjar" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 113
 script = ExtResource("1_4tg1g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_o3510")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_yigim")
@@ -16,11 +30,18 @@ frame_progress = 0.809822
 
 [node name="DetectionArea" type="Area2D" parent="."]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_8go4r")
+
 [node name="EnemyHitbox" type="Area2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="EnemyHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+shape = SubResource("CapsuleShape2D_kdliw")
 
 [node name="SFX" type="Node" parent="."]
 
 [node name="IdleSFX" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("3_usrtg")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

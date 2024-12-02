@@ -1,18 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://dti7qafloqpqp"]
+[gd_scene load_steps=6 format=3 uid="uid://dti7qafloqpqp"]
 
+[ext_resource type="Script" path="res://Scenes/Level 2/kuntilanakkepala_3.gd" id="1_mlda6"]
 [ext_resource type="SpriteFrames" uid="uid://cewm6biqqcj8w" path="res://AnimationSprite/Level 2/Kuntilanakkepala3.tres" id="1_yx0k8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k85xm"]
-radius = 7.0
+radius = 11.0
 height = 40.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8d7tt"]
+radius = 44.0454
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kx8iw"]
+height = 50.0
+
 [node name="Kuntilanakkepala3" type="CharacterBody2D"]
+script = ExtResource("1_mlda6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_yx0k8")
 animation = &"Attack depan"
-frame_progress = 0.337698
+frame_progress = 0.398146
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
 shape = SubResource("CapsuleShape2D_k85xm")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_8d7tt")
+
+[node name="EnemyHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+position = Vector2(0, 9)
+shape = SubResource("CapsuleShape2D_kx8iw")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
