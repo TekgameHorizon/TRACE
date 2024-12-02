@@ -12,7 +12,7 @@ var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
 func _ready():
 	# Simpan posisi awal saat game dimulai
 	start_position = position
-	$AnimatedSprite2D.play("Idle depan")
+	$AnimatedSprite2D.play("Idle")
 
 func _physics_process(delta):
 	if player_chase:
@@ -40,7 +40,7 @@ func _physics_process(delta):
 		
 		else:
 			# Jika sudah cukup dekat dengan player, berhenti mengejar
-			$AnimatedSprite2D.play("Idle depan")
+			$AnimatedSprite2D.play("Idle")
 			
 	elif not is_attacking:
 		# Enemy kembali ke posisi awal
@@ -56,7 +56,7 @@ func _physics_process(delta):
 		else:
 			# Enemy sudah di posisi awal
 			position = start_position  # Pastikan posisi tepat di start_position
-			$AnimatedSprite2D.play("Idle depan")
+			$AnimatedSprite2D.play("Idle")
 	else:
 		# Debug: Periksa idle state
 		print("Enemy idle...")

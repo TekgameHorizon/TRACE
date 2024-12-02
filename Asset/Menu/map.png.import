@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ehgiwuks30b1"
-path="res://.godot/imported/Horizone.png-a3987a275dac2381f6016ef96107714f.ctex"
+uid="uid://d2u5u2jixt0gk"
+path="res://.godot/imported/map.png-b4fe0f357899dd4834869c63f76ee5d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Menu/Level/Horizone.png"
-dest_files=["res://.godot/imported/Horizone.png-a3987a275dac2381f6016ef96107714f.ctex"]
+source_file="res://Asset/Menu/map.png"
+dest_files=["res://.godot/imported/map.png-b4fe0f357899dd4834869c63f76ee5d3.ctex"]
 
 [params]
 
