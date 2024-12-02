@@ -138,7 +138,6 @@ func start_attack():
 			$AnimatedSprite2D.play("Attack depan")
 		"up":
 			$AnimatedSprite2D.play("Attack belakang")
-
 	# Menghubungkan sinyal animation_finished dengan metode yang benar
 	$AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_attack_animation_finished"))
 

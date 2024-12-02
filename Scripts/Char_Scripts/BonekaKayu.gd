@@ -13,6 +13,7 @@ var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
 func _ready():
 	# Simpan posisi awal saat game dimulai
 	start_position = position
+	$AnimatedSprite2D.play("idle_down")
 
 func _physics_process(delta):
 	if player_chase:
