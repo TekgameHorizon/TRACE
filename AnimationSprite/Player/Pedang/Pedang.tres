@@ -338,7 +338,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2h4qw")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack belakang",
 "speed": 5.0
 }, {
@@ -361,7 +361,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6r26g")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack depan",
 "speed": 5.0
 }, {
@@ -384,7 +384,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4eter")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack kanan",
 "speed": 5.0
 }, {
@@ -407,7 +407,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1wvhh")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack kiri",
 "speed": 5.0
 }, {
