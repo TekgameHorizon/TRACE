@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://drwyspow1e4c1" path="res://Asset/Enemy/Level 2/Kuntilanak/move/Minion_Kuntilanak_Movement_Down.png" id="11_thh72"]
 [ext_resource type="Texture2D" uid="uid://b7ou1kgtsbe6" path="res://Asset/Enemy/Level 2/Kuntilanak/move/Minion_Kuntilanak_Movement_Right.png" id="12_awgnw"]
 [ext_resource type="Texture2D" uid="uid://vn8y3x88ds8t" path="res://Asset/Enemy/Level 2/Kuntilanak/move/Minion_Kuntilanak_Movement_Left.png" id="13_wg1ok"]
-[ext_resource type="AudioStream" uid="uid://blntectl01xh0" path="res://Audio/Sfx/Enemy/Minion/Kuntilanak/Idle/Movement.wav" id="15_w0gsr"]
+[ext_resource type="AudioStream" uid="uid://cfvbf5a1hjyis" path="res://Audio/Sfx/Enemy/Minion/Kuntilanak/Movement/Movement.wav" id="15_shb6g"]
 [ext_resource type="AudioStream" uid="uid://c7cr7wwk402wy" path="res://Audio/Sfx/Enemy/Minion/Kuntilanak/Attack/AttackKuntilanak.wav" id="16_8vimy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cq5i4"]
@@ -750,14 +750,17 @@ shape = SubResource("CircleShape2D_1ssmq")
 [node name="SFX" type="Node" parent="."]
 
 [node name="IdleSFX" type="AudioStreamPlayer2D" parent="SFX"]
-stream = ExtResource("15_w0gsr")
-volume_db = -5.0
+stream = ExtResource("15_shb6g")
 max_distance = 100.0
 attenuation = 1.36604
 
 [node name="AttackSFX" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("16_8vimy")
 volume_db = 15.0
+
+[node name="WalkSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("15_shb6g")
+volume_db = -5.0
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

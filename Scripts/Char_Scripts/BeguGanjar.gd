@@ -1,5 +1,4 @@
 extends CharacterBody2D
-@onready var idle_sfx = $SFX/IdleSFX
 
 var SPEED = 45
 var player_chase = false
@@ -9,6 +8,9 @@ var ATTACK_DISTANCE = 20 # Jarak untuk memasuki serangan
 var START_DISTANCE = 14  # Jarak berhenti mengejar player
 var start_position = Vector2()  # Posisi awal enemy
 var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
+@onready var idle_sfx = $SFX/IdleSFX
+@onready var walk_sfx = $SFX/WalkSFX
+@onready var attack_sfx = $SFX/AttackSFX
 
 func _ready():
 	# Simpan posisi awal saat game dimulai
@@ -25,6 +27,8 @@ func _physics_process(delta):
 			position += (player.position - position).normalized() * SPEED * delta
 			$AnimatedSprite2D.play("Move kanan")
 			$AnimatedSprite2D.flip_h = (player.position.x - position.x) < 0
+			if not walk_sfx.playing:
+				walk_sfx.play()
 			# Debug: Periksa apakah sedang mengejar
 
 		# Jika sudah berada dalam jarak serangan
@@ -35,6 +39,9 @@ func _physics_process(delta):
 			if !is_attacking:
 				attack_timer += delta
 				if attack_timer >= 1.0:  # Setiap detik
+					walk_sfx.stop()
+					attack_sfx.play()
+					
 					attack_timer = 0  # Reset timer
 					if player.has_method("decrease_health"):  # Pastikan player memiliki metode decrease_health
 						player.decrease_health(5)  # Mengurangi darah pemain 5 per detik

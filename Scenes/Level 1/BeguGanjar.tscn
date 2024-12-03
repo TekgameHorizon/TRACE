@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dws633rjxqvui"]
+[gd_scene load_steps=9 format=3 uid="uid://dws633rjxqvui"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/BeguGanjar.gd" id="1_4tg1g"]
 [ext_resource type="SpriteFrames" uid="uid://slhhc8x4j6ws" path="res://AnimationSprite/Level 1/BeguGanjar/BeguGanjar.tres" id="2_yigim"]
-[ext_resource type="AudioStream" uid="uid://co3cxh4al1uob" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Idle/Boss_BeguGanjar_IdleFixed.wav" id="3_usrtg"]
+[ext_resource type="AudioStream" uid="uid://bp5js7bcavgvm" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Idle/IdleBeguGanjang.wav" id="3_y84c6"]
+[ext_resource type="AudioStream" uid="uid://dvwr01n8l2bmn" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Movement/Boss_BeguGanjar_Move.wav" id="4_qqne2"]
+[ext_resource type="AudioStream" uid="uid://oeoc4nrutwgo" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Attack/BasicAttack/Boss_BeguGanjar_BasicAttack.wav" id="5_gqb7d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3510"]
 radius = 16.0
@@ -40,8 +42,15 @@ shape = SubResource("CapsuleShape2D_kdliw")
 
 [node name="SFX" type="Node" parent="."]
 
-[node name="IdleSFX" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("3_usrtg")
+[node name="IdleSFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("3_y84c6")
+max_distance = 200.0
+
+[node name="WalkSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_qqne2")
+
+[node name="AttackSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_gqb7d")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

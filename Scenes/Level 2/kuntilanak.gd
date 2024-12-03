@@ -11,6 +11,7 @@ var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
 
 @onready var idle_sfx = $SFX/IdleSFX
 @onready var attack_sfx = $SFX/AttackSFX
+@onready var walk_sfx = $SFX/WalkSFX
 
 
 func _ready():
@@ -28,8 +29,8 @@ func _physics_process(delta):
 			position += (player.position - position).normalized() * SPEED * delta
 			$AnimatedSprite2D.play("Move kanan")
 			$AnimatedSprite2D.flip_h = (player.position.x - position.x) < 0
-			if not idle_sfx.playing:
-				idle_sfx.play()
+			if not walk_sfx.playing:
+				walk_sfx.play()
 			# Debug: Periksa apakah sedang mengejar
 
 		# Jika sudah berada dalam jarak serangan
@@ -40,10 +41,11 @@ func _physics_process(delta):
 			if !is_attacking:
 				attack_timer += delta
 				if attack_timer >= 1.0:  # Setiap detik
-					idle_sfx.stop()
+					walk_sfx.stop()
 					attack_sfx.play()
 					
 					attack_timer = 0  # Reset timer
+					attack_sfx.stop()
 					if player.has_method("decrease_health"):  # Pastikan player memiliki metode decrease_health
 						player.decrease_health(5)  # Mengurangi darah pemain 5 per detik
 		

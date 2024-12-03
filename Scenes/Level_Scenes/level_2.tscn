@@ -1203,7 +1203,7 @@ tile_map_data = PackedByteArray("AAD/////AgAFAAIAAAD//wAAAgAFAAIAAAAAAP//AgAFAAI
 tile_set = SubResource("TileSet_l2chv")
 
 [node name="PlayerSword" parent="." instance=ExtResource("3_l66nv")]
-position = Vector2(1153, 1070)
+position = Vector2(1025, 1164)
 
 [node name="OrangBatak" parent="." instance=ExtResource("6_2yg2b")]
 position = Vector2(6.00006, 104)
