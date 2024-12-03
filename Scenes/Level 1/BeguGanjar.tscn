@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dws633rjxqvui"]
+[gd_scene load_steps=8 format=3 uid="uid://dws633rjxqvui"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/BeguGanjar.gd" id="1_4tg1g"]
 [ext_resource type="SpriteFrames" uid="uid://slhhc8x4j6ws" path="res://AnimationSprite/Level 1/BeguGanjar/BeguGanjar.tres" id="2_yigim"]
 [ext_resource type="AudioStream" uid="uid://co3cxh4al1uob" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Idle/Boss_BeguGanjar_IdleFixed.wav" id="3_usrtg"]
+[ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_uwfh1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3510"]
 radius = 17.0
@@ -44,6 +45,29 @@ shape = SubResource("CapsuleShape2D_kdliw")
 
 [node name="IdleSFX" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("3_usrtg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_uwfh1")]
+anchors_preset = -1
+anchor_left = 0.394965
+anchor_top = 0.944444
+anchor_right = 0.603299
+anchor_bottom = 0.950617
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.394097
+anchor_top = 0.899691
+anchor_right = 0.5
+anchor_bottom = 0.935185
+text = "BEGU GANJANG"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

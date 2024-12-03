@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@onready var walk = $SFX/IdleSFXSFX
+@onready var healthbar = $CanvasLayer/HealthBar
 
 var SPEED = 45
 var player_chase = false
@@ -16,6 +16,9 @@ func _ready():
 	# Simpan posisi awal saat game dimulai
 	start_position = position
 	$AnimatedSprite2D.play("Idle depan")
+	healthbar.init_health(enemy_health)
+	$CanvasLayer/HealthBar.visible = false
+	$CanvasLayer/Label.visible = false
 
 func _physics_process(delta):
 	if player_chase:
@@ -92,9 +95,17 @@ func enemy():
 	pass
 
 func enemy_take_damage(amount: int):
+	if not $CanvasLayer/HealthBar.visible:
+		$CanvasLayer/HealthBar.visible = true
+	
+	if not $CanvasLayer/Label.visible:
+		$CanvasLayer/Label.visible = true
+	
 	enemy_health -= amount
 	print("Enemy health: " + str(enemy_health))
 	if enemy_health <= 0:
 		enemy_health = 0
 		print("Enemy has been killed")
 		queue_free()  # Hancurkan enemy jika darah habis
+		
+	healthbar.health = enemy_health
