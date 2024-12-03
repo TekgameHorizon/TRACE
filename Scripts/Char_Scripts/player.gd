@@ -8,12 +8,13 @@ const DASH_TIME = 0.2
 var current_dir = "none"
 var is_dashing = false
 var dash_timer = 0.0
+var attack_timer = 0.0
 
 var is_attacking = false # Variabel untuk memeriksa apakah sedang menyerang
 
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
-var health = 10
+var health = 100
 var player_alive = true
 
 @onready var attack_sfx = $SFX/AttackSFX
@@ -50,10 +51,6 @@ func _physics_process(delta):
 func player_movement(_delta):
 	if Input.is_action_just_pressed("Dash") and not is_dashing:
 		start_dash()
-
-	elif not is_dashing:
-
-		if Input.is_action_pressed("Kanan") or Input.is_action_just_pressed("Kanan"):
 	elif Input.is_action_just_pressed("attack"):
 		start_attack()
 	elif not is_dashing and not is_attacking:  # Pastikan pemain tidak menyerang
