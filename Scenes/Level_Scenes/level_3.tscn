@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://ct6eqxe4j0pa3" path="res://Asset/Level/Level 3/Free-Cursed-Land-Top-Down-Pixel-Art-Tileset/Tiled_files/spots.png" id="8_5doay"]
 [ext_resource type="Texture2D" uid="uid://61pvjw3s3viv" path="res://Asset/Level/Level 3/Free-Cursed-Land-Top-Down-Pixel-Art-Tileset/Tiled_files/water_detilazation.png" id="9_iaj0i"]
 [ext_resource type="Texture2D" uid="uid://crtnrp7euh1i1" path="res://Asset/Level/Level 3/Free-Cursed-Land-Top-Down-Pixel-Art-Tileset/Tiled_files/water_detilazation_v2.png" id="10_pj3uh"]
-
 [ext_resource type="AudioStream" uid="uid://dmejpahdwmof0" path="res://Audio/Music/OverWorld/OverWorld_2.wav" id="11_dvogx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ytchs"]
