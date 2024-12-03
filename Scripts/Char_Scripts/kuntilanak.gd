@@ -5,8 +5,8 @@ var SPEED = 45
 var player_chase = false
 var player = null
 var is_attacking = false
-var ATTACK_DISTANCE = 20 # Jarak untuk memasuki serangan
-var START_DISTANCE = 14  # Jarak berhenti mengejar player
+var ATTACK_DISTANCE = 30 # Jarak untuk memasuki serangan
+var START_DISTANCE = 20 # Jarak berhenti mengejar player
 var start_position = Vector2()  # Posisi awal enemy
 var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
 var enemy_health = 100
@@ -36,10 +36,10 @@ func _physics_process(delta):
 			# Mengurangi darah pemain setiap detik
 			if !is_attacking:
 				attack_timer += delta
-				if attack_timer >= 1.0:  # Setiap detik
+				if attack_timer >= 2.7:  # Setiap detik
 					attack_timer = 0  # Reset timer
 					if player.has_method("decrease_health"):  # Pastikan player memiliki metode decrease_health
-						player.decrease_health(5)  # Mengurangi darah pemain 5 per detik
+						player.decrease_health(3)  # Mengurangi darah pemain 5 per detik
 		
 		else:
 			# Jika sudah cukup dekat dengan player, berhenti mengejar

@@ -829,7 +829,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ayiqa")
 }],
-"loop": true,
+"loop": false,
 "name": &"Proyektil jalan",
 "speed": 5.0
 }, {
