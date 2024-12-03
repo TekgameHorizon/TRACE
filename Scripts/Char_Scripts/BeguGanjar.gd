@@ -42,7 +42,7 @@ func _physics_process(delta):
 				if attack_timer >= 1.0:  # Setiap detik
 					attack_timer = 0  # Reset timer
 					if player.has_method("decrease_health"):  # Pastikan player memiliki metode decrease_health
-						player.decrease_health(3)  # Mengurangi darah pemain 5 per detik
+						player.decrease_health(1)  # Mengurangi darah pemain 5 per detik
 		
 		else:
 			# Jika sudah cukup dekat dengan player, berhenti mengejar
@@ -106,6 +106,7 @@ func enemy_take_damage(amount: int):
 	if enemy_health <= 0:
 		enemy_health = 0
 		print("Enemy has been killed")
-		queue_free()  # Hancurkan enemy jika darah habis
+		queue_free()
+		get_tree().change_scene_to_file("res://Scenes/Level_Scenes/level_2.tscn")  # Hancurkan enemy jika darah habis
 		
 	healthbar.health = enemy_health
