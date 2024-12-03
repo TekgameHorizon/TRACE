@@ -3,7 +3,11 @@
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/BonekaKayu.gd" id="1_66wod"]
 [ext_resource type="SpriteFrames" uid="uid://coeksn2epug4g" path="res://AnimationSprite/Level 1/Boneka kayu/BodekaKayu.tres" id="2_ioapi"]
 [ext_resource type="AudioStream" uid="uid://bbj7v7wmna2qc" path="res://Audio/Sfx/Enemy/Minion/SiBonekaKayu/Movement/Walkin.wav" id="3_pyj2q"]
+
+[ext_resource type="AudioStream" uid="uid://bg3nl1xoad6dk" path="res://Audio/Sfx/Enemy/Minion/SiBonekaKayu/Attack/Minion_PinokiyoKW_Attack_AllDirection.wav" id="4_wy53n"]
+
 [ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_y8umg"]
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epi3p"]
 
@@ -48,11 +52,16 @@ shape = SubResource("CircleShape2D_bemk0")
 [node name="WalkSFX" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("3_pyj2q")
 
+
+[node name="AttackSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_wy53n")
+
 [node name="HealthBar" parent="." instance=ExtResource("4_y8umg")]
 offset_left = -8.0
 offset_top = -19.0
 offset_right = 8.0
 offset_bottom = -17.0
+
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

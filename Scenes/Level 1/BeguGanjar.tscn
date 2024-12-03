@@ -2,8 +2,13 @@
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/BeguGanjar.gd" id="1_4tg1g"]
 [ext_resource type="SpriteFrames" uid="uid://slhhc8x4j6ws" path="res://AnimationSprite/Level 1/BeguGanjar/BeguGanjar.tres" id="2_yigim"]
+
+[ext_resource type="AudioStream" uid="uid://ct7h3wg14pb34" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Idle/IdleBeguGanjang.wav" id="3_hckgd"]
+[ext_resource type="AudioStream" uid="uid://dvwr01n8l2bmn" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Movement/Boss_BeguGanjar_Move.wav" id="4_0jojs"]
+
 [ext_resource type="AudioStream" uid="uid://co3cxh4al1uob" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Idle/Boss_BeguGanjar_IdleFixed.wav" id="3_usrtg"]
 [ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_uwfh1"]
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3510"]
 radius = 17.0
@@ -24,11 +29,16 @@ script = ExtResource("1_4tg1g")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)
 sprite_frames = ExtResource("2_yigim")
+
+animation = &"Idle depan"
+frame_progress = 0.803948
+
 animation = &"Attack kanan"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_o3510")
+
 
 [node name="DetectionArea" type="Area2D" parent="."]
 
@@ -44,7 +54,10 @@ shape = SubResource("CapsuleShape2D_2qltn")
 [node name="SFX" type="Node" parent="."]
 
 [node name="IdleSFX" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("3_usrtg")
+stream = ExtResource("3_hckgd")
+
+[node name="MoveSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_0jojs")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
