@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @onready var walk = $SFX/WalkSFX
+@onready var attack_sfx = $SFX/AttackSFX
 
 var SPEED = 45
 var player_chase = false
@@ -13,7 +14,6 @@ var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
 func _ready():
 	# Simpan posisi awal saat game dimulai
 	start_position = position
-	$AnimatedSprite2D.play("idle_down")
 
 func _physics_process(delta):
 	if player_chase:
@@ -49,6 +49,8 @@ func _physics_process(delta):
 		if distance_to_start > 5:
 			position += (start_position - position).normalized() * SPEED * delta
 			$AnimatedSprite2D.play("walk_side")
+			if !walk.playing:
+				walk.play()
 			
 			# Flip sprite direction saat kembali
 			$AnimatedSprite2D.flip_h = (start_position.x - position.x) < 0
@@ -58,6 +60,7 @@ func _physics_process(delta):
 			# Enemy sudah di posisi awal
 			position = start_position  # Pastikan posisi tepat di start_position
 			$AnimatedSprite2D.play("idle_down")
+			walk.stop()
 	else:
 		# Debug: Periksa idle state
 		print("Enemy idle...")
@@ -67,6 +70,7 @@ func _on_hitbox_area_entered(body: Node2D) -> void:
 	if body == player:
 		is_attacking = true
 		$AnimatedSprite2D.play("attack")
+		attack_sfx.play()
 		
 		# Tunggu animasi selesai
 		await $AnimatedSprite2D.animation_finished
@@ -77,13 +81,10 @@ func _on_hitbox_area_entered(body: Node2D) -> void:
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	player = body
 	player_chase = true
-	if !walk.playing:
-				walk.play()
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	player = null
 	player_chase = false
-	walk.stop()
 	
 func enemy():
 	pass
