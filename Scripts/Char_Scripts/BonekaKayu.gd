@@ -14,11 +14,8 @@ var enemy_health = 100
 
 func _ready():
 	start_position = position
-<<<<<<< Updated upstream
 	$AnimatedSprite2D.play("idle_down")
 	healthbar.init_health(enemy_health)
-=======
->>>>>>> Stashed changes
 
 func _physics_process(delta):
 	if player_chase:
