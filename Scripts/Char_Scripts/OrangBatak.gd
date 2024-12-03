@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var healthbar = $HealthBar
 
 var SPEED = 45
 var player_chase = false
@@ -8,6 +9,7 @@ var ATTACK_DISTANCE = 100  # Jarak untuk memasuki serangan
 var START_DISTANCE = 60    # Jarak berhenti mengejar player
 var start_position = Vector2()  # Posisi awal enemy
 var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
+var enemy_health = 100
 
 var bullet_speed = 80
 @onready var bullet = $tembakan  # Node AnimatedSprite2D untuk peluru
@@ -17,6 +19,7 @@ func _ready():
 	start_position = position
 	$AnimatedSprite2D.play("Idle depan")
 	bullet.visible = false  # Pastikan peluru disembunyikan saat mulai
+	healthbar.init_health(enemy_health)
 
 func _physics_process(delta):
 	if player_chase:
@@ -77,3 +80,13 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	player = null
 	player_chase = false
+	
+func enemy_take_damage(amount: int):
+	enemy_health -= amount
+	print("Enemy health: " + str(enemy_health))
+	if enemy_health <= 0:
+		enemy_health = 0
+		print("Enemy has been killed")
+		queue_free()  # Hancurkan enemy jika darah habis
+		
+	healthbar.health = enemy_health

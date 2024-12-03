@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://dajv2e2ejkvkd"]
+[gd_scene load_steps=110 format=3 uid="uid://dajv2e2ejkvkd"]
 
 [ext_resource type="Texture2D" uid="uid://ccmusvlaad65e" path="res://Asset/Enemy/Level 2/Kuntilanak/attack/Minion_Kuntilanak_attack_up.png" id="1_gs8w4"]
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/kuntilanak.gd" id="1_jopcx"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://drwyspow1e4c1" path="res://Asset/Enemy/Level 2/Kuntilanak/move/Minion_Kuntilanak_Movement_Down.png" id="11_thh72"]
 [ext_resource type="Texture2D" uid="uid://b7ou1kgtsbe6" path="res://Asset/Enemy/Level 2/Kuntilanak/move/Minion_Kuntilanak_Movement_Right.png" id="12_awgnw"]
 [ext_resource type="Texture2D" uid="uid://vn8y3x88ds8t" path="res://Asset/Enemy/Level 2/Kuntilanak/move/Minion_Kuntilanak_Movement_Left.png" id="13_wg1ok"]
+[ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="15_hceru"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cq5i4"]
 atlas = ExtResource("1_gs8w4")
@@ -714,13 +715,13 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_317vk"]
-radius = 6.0
+height = 50.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a30y4"]
 radius = 44.0454
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1ssmq"]
-radius = 14.0357
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1almi"]
+height = 50.0
 
 [node name="Kuntilanak" type="CharacterBody2D"]
 script = ExtResource("1_jopcx")
@@ -743,7 +744,13 @@ shape = SubResource("CircleShape2D_a30y4")
 [node name="EnemyHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
-shape = SubResource("CircleShape2D_1ssmq")
+shape = SubResource("CapsuleShape2D_1almi")
+
+[node name="HealthBar" parent="." instance=ExtResource("15_hceru")]
+offset_left = -11.0
+offset_top = -31.0
+offset_right = 11.0
+offset_bottom = -27.0
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

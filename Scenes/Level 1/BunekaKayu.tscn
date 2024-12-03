@@ -27,7 +27,9 @@ shape = SubResource("CircleShape2D_tspg3")
 position = Vector2(-1.90735e-06, -2)
 scale = Vector2(0.734375, 0.734375)
 sprite_frames = ExtResource("2_ioapi")
-animation = &"idle_down"
+animation = &"mati"
+frame = 8
+frame_progress = 1.0
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 2

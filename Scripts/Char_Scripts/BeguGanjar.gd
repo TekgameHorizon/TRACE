@@ -9,7 +9,7 @@ var ATTACK_DISTANCE = 40 # Jarak untuk memasuki serangan
 var START_DISTANCE = 24  # Jarak berhenti mengejar player
 var start_position = Vector2()  # Posisi awal enemy
 var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
-var enemy_health = 100
+var enemy_health = 250
 var current_dir = "none"
 
 func _ready():

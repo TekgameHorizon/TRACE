@@ -43,7 +43,6 @@ func player_movement(_delta):
 	if Input.is_action_just_pressed("Dash") and not is_dashing:
 		start_dash()
 	elif Input.is_action_just_pressed("attack"):
-		
 		start_attack()
 	elif not is_dashing and not is_attacking:  # Pastikan pemain tidak menyerang
 		if Input.is_action_pressed("Kanan"):
@@ -158,7 +157,7 @@ func start_attack():
 	var overlapping_bodies = hitbox.get_overlapping_bodies()  # Get overlapping bodies from Area2D
 	for object in overlapping_bodies:
 		if object.has_method("enemy"):  # Make sure the object is an enemy
-			object.enemy_take_damage(15)
+			object.enemy_take_damage(20)
 
 func _on_attack_animation_finished(anim_name: String):
 	if anim_name.begins_with("attack"):
