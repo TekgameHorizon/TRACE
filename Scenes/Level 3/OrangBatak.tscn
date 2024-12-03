@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/OrangBatak.gd" id="1_3hc03"]
 [ext_resource type="SpriteFrames" uid="uid://1nv7vw4b2nwr" path="res://AnimationSprite/Level 3/ORGBatak.tres" id="1_usk5h"]
-[ext_resource type="PackedScene" uid="uid://dvf768jfac1gg" path="res://Scenes/Level 3/tembakan.tscn" id="2_2po40"]
+[ext_resource type="PackedScene" uid="uid://kj60p27yuds0" path="res://Scenes/Level 3/tembakan.tscn" id="2_2po40"]
 [ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="3_ano7d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2rqn"]
