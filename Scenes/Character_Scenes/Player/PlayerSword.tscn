@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://4hqdh8geo27w"]
+[gd_scene load_steps=7 format=3 uid="uid://4hqdh8geo27w"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/player.gd" id="1_s814w"]
 [ext_resource type="SpriteFrames" uid="uid://ql35dppjfj86" path="res://AnimationSprite/Player/Pedang/Pedang.tres" id="2_tkiyo"]
 [ext_resource type="AudioStream" uid="uid://bskn7ap06a8o0" path="res://Audio/Sfx/Walk.mp3" id="3_6fybt"]
 [ext_resource type="AudioStream" uid="uid://bfp236l6b8gyo" path="res://Audio/Sfx/Player/Basic Attack/Sword_Attack/Attack_Sword.wav" id="4_q8cev"]
+[ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_4slos"]
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4c76t"]
 radius = 6.0
 height = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8mo4a"]
+radius = 5.0
 
 [node name="PlayerSword" type="CharacterBody2D"]
 collision_layer = 3
@@ -20,8 +25,9 @@ zoom = Vector2(4, 4)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.59375, 0.59375)
 sprite_frames = ExtResource("2_tkiyo")
-animation = &"Attack belakang"
+animation = &"Move kiri"
 autoplay = "Move depan"
+
 frame_progress = 0.40167
 offset = Vector2(0, -15)
 
@@ -32,6 +38,10 @@ shape = SubResource("CapsuleShape2D_4c76t")
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+
+position = Vector2(0, -6)
+scale = Vector2(2.51424, 2.06306)
+shape = SubResource("CircleShape2D_8mo4a")
 
 [node name="CoolDown" type="Timer" parent="."]
 
@@ -45,3 +55,17 @@ bus = &"Sfx"
 
 [node name="AttackSFX" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("4_q8cev")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_4slos")]
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 289.0
+offset_bottom = 42.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 26.0
+offset_top = 48.0
+offset_right = 67.0
+offset_bottom = 71.0
+text = "IGRIS"

@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var healthbar = $CanvasLayer/HealthBar
 
 var SPEED = 45
 var player_chase = false
@@ -8,11 +9,15 @@ var ATTACK_DISTANCE = 20 # Jarak untuk memasuki serangan
 var START_DISTANCE = 14  # Jarak berhenti mengejar player
 var start_position = Vector2()  # Posisi awal enemy
 var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
+var enemy_health = 250
 
 func _ready():
 	# Simpan posisi awal saat game dimulai
 	start_position = position
-	$AnimatedSprite2D.play("Idle depan")
+	$AnimatedSprite2D.play("Idle")
+	healthbar.init_health(enemy_health)
+	$CanvasLayer/HealthBar.visible = false
+	$CanvasLayer/Label.visible = false
 
 func _physics_process(delta):
 	if player_chase:
@@ -40,7 +45,7 @@ func _physics_process(delta):
 		
 		else:
 			# Jika sudah cukup dekat dengan player, berhenti mengejar
-			$AnimatedSprite2D.play("Idle depan")
+			$AnimatedSprite2D.play("Idle")
 			
 	elif not is_attacking:
 		# Enemy kembali ke posisi awal
@@ -56,7 +61,7 @@ func _physics_process(delta):
 		else:
 			# Enemy sudah di posisi awal
 			position = start_position  # Pastikan posisi tepat di start_position
-			$AnimatedSprite2D.play("Idle depan")
+			$AnimatedSprite2D.play("Idle")
 	else:
 		# Debug: Periksa idle state
 		print("Enemy idle...")
@@ -83,3 +88,19 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 	
 func enemy():
 	pass
+
+func enemy_take_damage(amount: int):
+	if not $CanvasLayer/HealthBar.visible:
+		$CanvasLayer/HealthBar.visible = true
+	
+	if not $CanvasLayer/Label.visible:
+		$CanvasLayer/Label.visible = true
+	
+	enemy_health -= amount
+	print("Enemy health: " + str(enemy_health))
+	if enemy_health <= 0:
+		enemy_health = 0
+		print("Enemy has been killed")
+		queue_free()  # Hancurkan enemy jika darah habis
+	
+	healthbar.health = enemy_health

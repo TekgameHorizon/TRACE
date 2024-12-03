@@ -2,32 +2,43 @@
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/BeguGanjar.gd" id="1_4tg1g"]
 [ext_resource type="SpriteFrames" uid="uid://slhhc8x4j6ws" path="res://AnimationSprite/Level 1/BeguGanjar/BeguGanjar.tres" id="2_yigim"]
+
 [ext_resource type="AudioStream" uid="uid://ct7h3wg14pb34" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Idle/IdleBeguGanjang.wav" id="3_hckgd"]
 [ext_resource type="AudioStream" uid="uid://dvwr01n8l2bmn" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Movement/Boss_BeguGanjar_Move.wav" id="4_0jojs"]
 
+[ext_resource type="AudioStream" uid="uid://co3cxh4al1uob" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Idle/Boss_BeguGanjar_IdleFixed.wav" id="3_usrtg"]
+[ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_uwfh1"]
+
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3510"]
-radius = 16.0
-height = 92.0
+radius = 17.0
+height = 102.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8go4r"]
 radius = 181.099
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kdliw"]
-radius = 15.0
-height = 92.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qltn"]
+radius = 22.0
+height = 104.0
 
 [node name="BeguBanjar" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 113
 script = ExtResource("1_4tg1g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_o3510")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
 sprite_frames = ExtResource("2_yigim")
+
 animation = &"Idle depan"
 frame_progress = 0.803948
+
+animation = &"Attack kanan"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_o3510")
+
 
 [node name="DetectionArea" type="Area2D" parent="."]
 
@@ -37,7 +48,8 @@ shape = SubResource("CircleShape2D_8go4r")
 [node name="EnemyHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
-shape = SubResource("CapsuleShape2D_kdliw")
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_2qltn")
 
 [node name="SFX" type="Node" parent="."]
 
@@ -46,6 +58,29 @@ stream = ExtResource("3_hckgd")
 
 [node name="MoveSFX" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("4_0jojs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_uwfh1")]
+anchors_preset = -1
+anchor_left = 0.394965
+anchor_top = 0.944444
+anchor_right = 0.603299
+anchor_bottom = 0.950617
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.394097
+anchor_top = 0.899691
+anchor_right = 0.5
+anchor_bottom = 0.935185
+text = "BEGU GANJANG"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

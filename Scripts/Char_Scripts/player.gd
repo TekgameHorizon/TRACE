@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var healthbar = $CanvasLayer/HealthBar
 
 const SPEED = 100
 const DASH_SPEED = 300
@@ -21,6 +22,11 @@ var player_alive = true
 func _ready():
 	$AnimatedSprite2D.play("Idle depan")
 
+	add_child(attack_timer)
+	attack_timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
+	healthbar.init_health(health)
+
+
 func _physics_process(delta):
 	if is_dashing:
 		dash_timer -= delta
@@ -42,8 +48,14 @@ func _physics_process(delta):
 func player_movement(_delta):
 	if Input.is_action_just_pressed("Dash") and not is_dashing:
 		start_dash()
+
 	elif not is_dashing:
 		if Input.is_action_pressed("Kanan") or Input.is_action_just_pressed("Kanan"):
+	elif Input.is_action_just_pressed("attack"):
+		start_attack()
+	elif not is_dashing and not is_attacking:  # Pastikan pemain tidak menyerang
+		if Input.is_action_pressed("Kanan"):
+
 			current_dir = "right"
 			play_anim(1)
 			velocity.x = SPEED
@@ -129,6 +141,7 @@ func play_anim(movement):
 			anim.play("Idle belakang")
 
 func start_attack():
+
 	is_attacking = true  # Menandakan bahwa pemain sedang menyerang
 	match current_dir:
 		"right":
@@ -146,6 +159,38 @@ func start_attack():
 
 	# Menghubungkan sinyal animation_finished dengan metode yang benar
 	$AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_attack_animation_finished"))
+
+	is_attacking = true
+	velocity = Vector2.ZERO  # Hentikan gerakan saat menyerang
+	print("attack di press")
+	
+	# Menyesuaikan posisi CollisionShape2D berdasarkan arah serangan
+	var hitbox = $HitBox  # Akses CollisionShape2D di dalam HitBox
+	
+	match current_dir:
+		"right":
+			$AnimatedSprite2D.play("Attack kanan")
+			hitbox.position.x = 7  # Pindahkan CollisionShape2D ke kanan
+			print("Hitbox position (right): " + str(hitbox.position))  # Print posisi
+		"left":
+			$AnimatedSprite2D.play("Attack kiri")
+			hitbox.position.x = -7  # Pindahkan CollisionShape2D ke kiri
+			print("Hitbox position (left): " + str(hitbox.position))  # Print posisi
+		"down":
+			$AnimatedSprite2D.play("Attack depan")
+			hitbox.position.y = -1  # Pindahkan CollisionShape2D ke bawah
+			print("Hitbox position (down): " + str(hitbox.position))  # Print posisi
+		"up":
+			$AnimatedSprite2D.play("Attack belakang")
+			hitbox.position.y = -15  # Pindahkan CollisionShape2D ke atas
+			print("Hitbox position (up): " + str(hitbox.position))  # Print posisi
+			
+	attack_timer.start()
+	# Hubungkan sinyal hanya sekali dengan Callabl
+	var overlapping_bodies = hitbox.get_overlapping_bodies()  # Get overlapping bodies from Area2D
+	for object in overlapping_bodies:
+		if object.has_method("enemy"):  # Make sure the object is an enemy
+			object.enemy_take_damage(20)
 
 func _on_attack_animation_finished(anim_name):
 	if anim_name.begins_with("attack"):  # Jdika animasi yang selesai adalah animasi attack
@@ -187,3 +232,11 @@ func decrease_health(amount: int):
 		health = 0
 		print("player has been killed")
 		self.queue_free()
+	
+	healthbar.health = health
+
+func _on_attack_timer_timeout() :
+	is_attacking = false
+	var hitbox = $HitBox/CollisionShape2D
+	hitbox.position.y = -8
+	hitbox.position.x = 0
