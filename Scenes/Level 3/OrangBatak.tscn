@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dg2unlj0u8oa0"]
+[gd_scene load_steps=11 format=3 uid="uid://dg2unlj0u8oa0"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/OrangBatak.gd" id="1_3hc03"]
 [ext_resource type="SpriteFrames" uid="uid://1nv7vw4b2nwr" path="res://AnimationSprite/Level 3/ORGBatak.tres" id="1_usk5h"]
-[ext_resource type="PackedScene" uid="uid://kj60p27yuds0" path="res://Scenes/Level 3/tembakan.tscn" id="2_2po40"]
+[ext_resource type="PackedScene" path="res://Scenes/Level 3/tembakan.tscn" id="2_2po40"]
 [ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="3_ano7d"]
+[ext_resource type="AudioStream" uid="uid://nvrpmcgau0ih" path="res://Audio/Sfx/Enemy/Minion/OrangBatak/Attack/Minion_OrgBatak_Atk.wav" id="4_j6wd0"]
+[ext_resource type="AudioStream" uid="uid://b55dh3syfd50k" path="res://Audio/Sfx/Enemy/Minion/OrangBatak/Proyektil/Proyektil_Explosion.wav" id="5_cac06"]
+[ext_resource type="AudioStream" uid="uid://bskn7ap06a8o0" path="res://Audio/Sfx/Walk.mp3" id="7_ysnej"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2rqn"]
 radius = 17.0
@@ -48,6 +51,17 @@ offset_left = -9.0
 offset_top = -22.0
 offset_right = 9.0
 offset_bottom = -18.0
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="AttackSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_j6wd0")
+
+[node name="AttackExplodeSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_cac06")
+
+[node name="WalkSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("7_ysnej")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

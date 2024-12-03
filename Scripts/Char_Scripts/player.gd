@@ -14,8 +14,8 @@ var enemy_attack_cooldown = true
 var health = 100
 var player_alive = true
 
-@onready var attack_sfx = $Audio/SFX/Attack
-@onready var walk_sfx = $Audio/SFX/WalkSFX
+@onready var attack_sfx = $SFX/AttackSFX
+@onready var walk_sfx = $SFX/WalkSFX
 @onready var attack_timer = Timer.new()  # Timer dibuat secara dinamis
 
 func _ready():

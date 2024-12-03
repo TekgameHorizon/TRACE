@@ -43,16 +43,10 @@ func _physics_process(delta):
 			# Mengurangi darah pemain setiap detik
 			if !is_attacking:
 				attack_timer += delta
-<<<<<<<< HEAD:Scenes/Level 2/kuntilanak.gd
-				if attack_timer >= 1.0:  # Setiap detik
-					walk_sfx.stop()
-					attack_sfx.play()
-					
-========
+
 				if attack_timer >= 2.7:  # Setiap detik
->>>>>>>> main:Scripts/Char_Scripts/kuntilanak.gd
 					attack_timer = 0  # Reset timer
-					attack_sfx.stop()
+					attack_sfx.play()
 					if player.has_method("decrease_health"):  # Pastikan player memiliki metode decrease_health
 						player.decrease_health(3)  # Mengurangi darah pemain 5 per detik
 		

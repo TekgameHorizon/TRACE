@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce8ts6ry802vj"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/option_menu.gd" id="1_p6c36"]
+[ext_resource type="Script" path="res://Scripts/Menu/audio_menu.gd" id="2_ps8vd"]
+
+[node name="OptionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p6c36")
+
+[node name="Audio Menu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_ps8vd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Audio Menu"]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 240.0
+offset_right = 945.0
+offset_bottom = 377.0
+
+[node name="Master Label" type="Label" parent="Audio Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Master
+"
+
+[node name="Master Slider" type="HSlider" parent="Audio Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.001
+
+[node name="Music Label" type="Label" parent="Audio Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Music"
+
+[node name="Music Slider" type="HSlider" parent="Audio Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.001
+
+[node name="SFX Label" type="Label" parent="Audio Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "SFX"
+
+[node name="SFX Slider" type="HSlider" parent="Audio Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.001
+
+[node name="Confirm" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1064.0
+offset_top = 574.0
+offset_right = 1116.0
+offset_bottom = 605.0
+text = "Apply"
+
+[connection signal="mouse_exited" from="Audio Menu/VBoxContainer/Master Slider" to="Audio Menu" method="_on_master_slider_mouse_exited"]
+[connection signal="mouse_exited" from="Audio Menu/VBoxContainer/Music Slider" to="Audio Menu" method="_on_music_slider_mouse_exited"]
+[connection signal="mouse_exited" from="Audio Menu/VBoxContainer/SFX Slider" to="Audio Menu" method="_on_sfx_slider_mouse_exited"]
+[connection signal="pressed" from="Confirm" to="." method="_on_button_pressed"]

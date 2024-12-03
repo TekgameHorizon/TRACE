@@ -1,5 +1,7 @@
 extends CharacterBody2D
 @onready var healthbar = $CanvasLayer/HealthBar
+@onready var walk_sfx = $SFX/WalkSFX
+@onready var attack_sfx = $SFX/AttackSFX
 
 var SPEED = 45
 var player_chase = false

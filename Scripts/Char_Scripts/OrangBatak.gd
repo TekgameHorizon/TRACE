@@ -1,5 +1,8 @@
 extends CharacterBody2D
 @onready var healthbar = $HealthBar
+@onready var attack_sfx = $SFX/AttackSFX
+@onready var attack_explode_sfx = $SFX/AttackExplodeSFX
+@onready var walk_sfx = $SFX/WalkSFX
 
 var SPEED = 45
 var player_chase = false
@@ -21,6 +24,7 @@ func _ready():
 	$AnimatedSprite2D.play("Idle depan")
 	bullet.visible = false  # Pastikan peluru disembunyikan saat mulai
 	healthbar.init_health(enemy_health)
+	attack_sfx.stop()
 
 func _physics_process(delta):
 	if player_chase:
@@ -30,8 +34,11 @@ func _physics_process(delta):
 			position += (player.position - position).normalized() * SPEED * delta
 			$AnimatedSprite2D.play("Move kanan")
 			$AnimatedSprite2D.flip_h = (player.position.x - position.x) < 0
+			if not walk_sfx.playing:
+				walk_sfx.play()
 		elif distance_to_player <= ATTACK_DISTANCE and bullet_ready:
 			spawn_bullet()
+			walk_sfx.stop()
 		else:
 			$AnimatedSprite2D.play("Idle depan")
 	elif not is_attacking:
@@ -63,12 +70,14 @@ func _process(delta):
 			# Jika peluru mengenai player
 			if bullet.global_position.distance_to(player.global_position) < 10:
 				bullet.visible = false  # Hilangkan peluru
+				attack_explode_sfx.play()
 				if player.has_method("decrease_health"):
 					player.decrease_health(3)
 				
 				# Mulai animasi "Attack kanan" dan tunggu selama 2 detik
 				$AnimatedSprite2D.play("Attack kanan")
 				var timer = get_tree().create_timer(2.0)
+				attack_sfx.play()
 				await timer.timeout  # Tunggu sampai timer selesai
 				
 				bullet_ready = true  # Peluru siap lagi
