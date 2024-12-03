@@ -1,22 +1,21 @@
 extends CharacterBody2D
-@onready var idle_sfx = $SFX/IdleSFX
-@onready var healthbar = $CanvasLayer/HealthBar
+@onready var walk = $SFX/IdleSFXSFX
 
 var SPEED = 45
 var player_chase = false
 var player = null
 var is_attacking = false
-var ATTACK_DISTANCE = 20 # Jarak untuk memasuki serangan
-var START_DISTANCE = 14  # Jarak berhenti mengejar player
+var ATTACK_DISTANCE = 40 # Jarak untuk memasuki serangan
+var START_DISTANCE = 24  # Jarak berhenti mengejar player
 var start_position = Vector2()  # Posisi awal enemy
 var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
-var boss_health = 200
+var enemy_health = 100
+var current_dir = "none"
 
 func _ready():
 	# Simpan posisi awal saat game dimulai
 	start_position = position
 	$AnimatedSprite2D.play("Idle depan")
-	healthbar.init_health(boss_health)
 
 func _physics_process(delta):
 	if player_chase:
@@ -40,7 +39,7 @@ func _physics_process(delta):
 				if attack_timer >= 1.0:  # Setiap detik
 					attack_timer = 0  # Reset timer
 					if player.has_method("decrease_health"):  # Pastikan player memiliki metode decrease_health
-						player.decrease_health(5)  # Mengurangi darah pemain 5 per detik
+						player.decrease_health(3)  # Mengurangi darah pemain 5 per detik
 		
 		else:
 			# Jika sudah cukup dekat dengan player, berhenti mengejar
@@ -52,6 +51,7 @@ func _physics_process(delta):
 		if distance_to_start > 5:
 			position += (start_position - position).normalized() * SPEED * delta
 			$AnimatedSprite2D.play("Move kanan")
+			
 			
 			# Flip sprite direction saat kembali
 			$AnimatedSprite2D.flip_h = (start_position.x - position.x) < 0
@@ -69,7 +69,7 @@ func _physics_process(delta):
 func _on_hitbox_area_entered(body: Node2D) -> void:
 	if body == player:
 		is_attacking = true
-		$AnimatedSprite2D.play("Attack kanan")
+		$AnimatedSprite2D.play("attack")
 		
 		# Tunggu animasi selesai
 		await $AnimatedSprite2D.animation_finished
@@ -80,20 +80,21 @@ func _on_hitbox_area_entered(body: Node2D) -> void:
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	player = body
 	player_chase = true
+	#$if !walk.playing:
+			#walk.play()
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	player = null
 	player_chase = false
-
-func enemy_take_damage(amount: int):
-	boss_health -= amount
-	print("Enemy health: " + str(boss_health))
-	if boss_health <= 0:
-		boss_health = 0
-		print("Enemy has been killed")
-		queue_free()  # Hancurkan enemy jika darah habis
-		
-	healthbar.health = boss_health
+	#walk.stop()
 	
 func enemy():
 	pass
+
+func enemy_take_damage(amount: int):
+	enemy_health -= amount
+	print("Enemy health: " + str(enemy_health))
+	if enemy_health <= 0:
+		enemy_health = 0
+		print("Enemy has been killed")
+		queue_free()  # Hancurkan enemy jika darah habis

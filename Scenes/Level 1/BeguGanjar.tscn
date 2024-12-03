@@ -1,20 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://dws633rjxqvui"]
+[gd_scene load_steps=7 format=3 uid="uid://dws633rjxqvui"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/BeguGanjar.gd" id="1_4tg1g"]
 [ext_resource type="SpriteFrames" uid="uid://slhhc8x4j6ws" path="res://AnimationSprite/Level 1/BeguGanjar/BeguGanjar.tres" id="2_yigim"]
 [ext_resource type="AudioStream" uid="uid://co3cxh4al1uob" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Idle/Boss_BeguGanjar_IdleFixed.wav" id="3_usrtg"]
-[ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_uwfh1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3510"]
-radius = 16.0
-height = 92.0
+radius = 17.0
+height = 52.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8go4r"]
 radius = 181.099
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kdliw"]
-radius = 15.0
-height = 92.0
+radius = 30.0
+height = 60.0
 
 [node name="BeguBanjar" type="CharacterBody2D"]
 collision_layer = 3
@@ -22,52 +21,29 @@ collision_mask = 113
 script = ExtResource("1_4tg1g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(-1, 28)
 shape = SubResource("CapsuleShape2D_o3510")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_yigim")
-animation = &"Move kiri"
-frame_progress = 0.809822
+animation = &"Attack kanan"
 
 [node name="DetectionArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-1, 29)
 shape = SubResource("CircleShape2D_8go4r")
 
 [node name="EnemyHitbox" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+position = Vector2(-2, 25)
 shape = SubResource("CapsuleShape2D_kdliw")
 
 [node name="SFX" type="Node" parent="."]
 
 [node name="IdleSFX" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("3_usrtg")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_uwfh1")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -120.0
-offset_top = -24.0
-offset_right = 120.0
-offset_bottom = -18.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 456.0
-offset_top = 597.0
-offset_right = 578.0
-offset_bottom = 620.0
-text = "BEGU GANJANG"
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

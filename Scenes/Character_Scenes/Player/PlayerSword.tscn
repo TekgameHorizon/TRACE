@@ -36,7 +36,7 @@ shape = SubResource("CapsuleShape2D_4c76t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(0, -6)
-scale = Vector2(1.88, 1.76)
+scale = Vector2(2.51424, 2.06306)
 shape = SubResource("CircleShape2D_8mo4a")
 
 [node name="CoolDown" type="Timer" parent="."]
