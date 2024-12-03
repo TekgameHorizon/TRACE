@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=4 uid="uid://drg5lquf8sbko"]
+[gd_scene load_steps=15 format=4 uid="uid://drg5lquf8sbko"]
 
 [ext_resource type="Script" path="res://Scenes/Level_Scenes/level_1.gd" id="1_rnf8h"]
 [ext_resource type="Texture2D" uid="uid://dk0bvqycwadpv" path="res://Asset/Level/Level 1/Tileset/spr_grass_tileset.png" id="1_slydy"]
 [ext_resource type="PackedScene" uid="uid://4hqdh8geo27w" path="res://Scenes/Character_Scenes/Player/PlayerSword.tscn" id="2_b3kju"]
 [ext_resource type="PackedScene" uid="uid://btkdfeb104mc5" path="res://Scenes/Level 1/BunekaKayu.tscn" id="3_t1xbv"]
 [ext_resource type="PackedScene" uid="uid://dws633rjxqvui" path="res://Scenes/Level 1/BeguGanjar.tscn" id="4_7d204"]
+[ext_resource type="AudioStream" uid="uid://cuvbpa6rb5pj4" path="res://Audio/Music/OverWorld/OverWorld_1.wav" id="5_jox3t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_74kp4"]
 texture = ExtResource("1_slydy")
@@ -336,10 +337,10 @@ tile_map_data = PackedByteArray("AAD8//z/AAAHAAkAAAD8//3/AAAHAAgAAAD8//7/AAAHAAk
 tile_set = SubResource("TileSet_eb5b1")
 
 [node name="PlayerSword" parent="." instance=ExtResource("2_b3kju")]
-position = Vector2(-101, -6)
+position = Vector2(-351, -635)
 
 [node name="BonekaKayu" parent="." instance=ExtResource("3_t1xbv")]
-position = Vector2(289, 15)
+position = Vector2(286, -141)
 collision_mask = 115
 
 [node name="BeguBanjar" parent="." instance=ExtResource("4_7d204")]
@@ -358,3 +359,7 @@ tile_set = SubResource("TileSet_csm2p")
 [node name="DECORATION" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAUAOf/AAABABkAAAATAOf/AAABABgAAAAuANn/AAABABkAAAAvANn/AAABABgAAAAXAPX/AAAGABgAAAAYAPX/AAABABgAAAAIAAYAAAABABkAAAAJAAYAAAAGABgAAAAAAPj/AAAGABgAAAABAPj/AAABABgAAAAaAND/AAABABkAAAAbAND/AAABABgAAADS/9n/AAABABkAAADT/9j/AAACABgAAADX/9L/AAABABkAAADX/+X/AAABABkAAADY/9L/AAACABgAAADY/+X/AAAGABgAAADe/9v/AAABABkAAADf/9v/AAACABgAAADl/8v/AAABABkAAADm/8v/AAAGABgAAADu/9r/AAAEABgAAADw/9f/AAAEABgAAAA=")
 tile_set = SubResource("TileSet_ncwty")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jox3t")
+autoplay = true

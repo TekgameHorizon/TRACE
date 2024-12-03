@@ -13,7 +13,8 @@ var enemy_attack_cooldown = true
 var health = 100
 var player_alive = true
 
-@onready var walk = $WalkSFX
+@onready var attack_sfx = $Audio/SFX/Attack
+@onready var walk_sfx = $Audio/SFX/WalkSFX
 @onready var attack_timer = Timer.new()  # Timer dibuat secara dinamis
 
 func _ready():
@@ -51,34 +52,34 @@ func player_movement(_delta):
 			play_anim(1)
 			velocity.x = SPEED
 			velocity.y = 0
-			if not walk.playing:
-				walk.play()
+			if not walk_sfx.playing:
+				walk_sfx.play()
 		elif Input.is_action_pressed("Kiri"):
 			current_dir = "left"
 			play_anim(1)
 			velocity.x = -SPEED
 			velocity.y = 0
-			if not walk.playing:
-				walk.play()
+			if not walk_sfx.playing:
+				walk_sfx.play()
 		elif Input.is_action_pressed("Belakang"):
 			current_dir = "down"
 			play_anim(1)
 			velocity.y = SPEED
 			velocity.x = 0
-			if not walk.playing:
-				walk.play()
+			if not walk_sfx.playing:
+				walk_sfx.play()
 		elif Input.is_action_pressed("Depan"):
 			current_dir = "up"
 			play_anim(1)
 			velocity.y = -SPEED
 			velocity.x = 0
-			if not walk.playing:
-				walk.play()
+			if not walk_sfx.playing:
+				walk_sfx.play()
 		else:
 			play_anim(0)
 			velocity.x = 0
 			velocity.y = 0
-			walk.stop()
+			walk_sfx.stop()
 	
 
 func start_dash():
@@ -138,18 +139,22 @@ func start_attack():
 	match current_dir:
 		"right":
 			$AnimatedSprite2D.play("Attack kanan")
+			attack_sfx.play()
 			hitbox.position.x = 7  # Pindahkan CollisionShape2D ke kanan
 			print("Hitbox position (right): " + str(hitbox.position))  # Print posisi
 		"left":
 			$AnimatedSprite2D.play("Attack kiri")
+			attack_sfx.play()
 			hitbox.position.x = -7  # Pindahkan CollisionShape2D ke kiri
 			print("Hitbox position (left): " + str(hitbox.position))  # Print posisi
 		"down":
 			$AnimatedSprite2D.play("Attack depan")
+			attack_sfx.play()
 			hitbox.position.y = -1  # Pindahkan CollisionShape2D ke bawah
 			print("Hitbox position (down): " + str(hitbox.position))  # Print posisi
 		"up":
 			$AnimatedSprite2D.play("Attack belakang")
+			attack_sfx.play()
 			hitbox.position.y = -15  # Pindahkan CollisionShape2D ke atas
 			print("Hitbox position (up): " + str(hitbox.position))  # Print posisi
 			

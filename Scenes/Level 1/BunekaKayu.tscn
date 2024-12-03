@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://btkdfeb104mc5"]
+[gd_scene load_steps=8 format=3 uid="uid://btkdfeb104mc5"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/BonekaKayu.gd" id="1_66wod"]
 [ext_resource type="SpriteFrames" uid="uid://coeksn2epug4g" path="res://AnimationSprite/Level 1/Boneka kayu/BodekaKayu.tres" id="2_ioapi"]
 [ext_resource type="AudioStream" uid="uid://bbj7v7wmna2qc" path="res://Audio/Sfx/Enemy/Minion/SiBonekaKayu/Movement/Walkin.wav" id="3_pyj2q"]
+[ext_resource type="AudioStream" uid="uid://bg3nl1xoad6dk" path="res://Audio/Sfx/Enemy/Minion/SiBonekaKayu/Attack/Minion_PinokiyoKW_Attack_AllDirection.wav" id="4_wy53n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tspg3"]
 radius = 8.06226
@@ -56,6 +57,9 @@ shape = SubResource("CircleShape2D_bemk0")
 
 [node name="WalkSFX" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("3_pyj2q")
+
+[node name="AttackSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_wy53n")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://4hqdh8geo27w"]
+[gd_scene load_steps=7 format=3 uid="uid://4hqdh8geo27w"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/player.gd" id="1_s814w"]
 [ext_resource type="SpriteFrames" uid="uid://ql35dppjfj86" path="res://AnimationSprite/Player/Pedang/Pedang.tres" id="2_tkiyo"]
 [ext_resource type="AudioStream" uid="uid://bskn7ap06a8o0" path="res://Audio/Sfx/Walk.mp3" id="3_6fybt"]
+[ext_resource type="AudioStream" uid="uid://b4p4tac8yvg4d" path="res://Audio/Sfx/Player/Basic Attack/Sword_Attack/Attack_Sword.wav" id="4_q8cev"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4c76t"]
 radius = 6.0
@@ -46,6 +47,13 @@ shape = SubResource("CircleShape2D_8mo4a")
 [node name="attack_timer" type="Timer" parent="."]
 wait_time = 0.76
 
-[node name="WalkSFX" type="AudioStreamPlayer" parent="."]
+[node name="Audio" type="Node" parent="."]
+
+[node name="SFX" type="Node" parent="Audio"]
+
+[node name="WalkSFX" type="AudioStreamPlayer" parent="Audio/SFX"]
 stream = ExtResource("3_6fybt")
 bus = &"Sfx"
+
+[node name="Attack" type="AudioStreamPlayer" parent="Audio/SFX"]
+stream = ExtResource("4_q8cev")

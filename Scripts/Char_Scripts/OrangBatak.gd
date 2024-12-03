@@ -12,6 +12,11 @@ var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
 var bullet_speed = 80
 @onready var bullet = $tembakan  # Node AnimatedSprite2D untuk peluru
 
+@onready var walk_sfx = $SFX/WalkSFX
+@onready var attack_sfx = $SFX/AttackSFX
+@onready var attack_explode_sfx = $SFX/AttackSFX/AttackExplodeSFX
+
+
 func _ready():
 	# Simpan posisi awal saat game dimulai
 	start_position = position
@@ -26,6 +31,8 @@ func _physics_process(delta):
 			position += (player.position - position).normalized() * SPEED * delta
 			$AnimatedSprite2D.play("Move kanan")
 			$AnimatedSprite2D.flip_h = (player.position.x - position.x) < 0
+			if not walk_sfx.playing:
+				walk_sfx.play()
 		elif distance_to_player <= ATTACK_DISTANCE:
 			spawn_bullet()
 		else:
@@ -48,6 +55,8 @@ func spawn_bullet():
 		bullet.global_position = global_position
 		bullet.visible = true
 		$AnimatedSprite2D.play("Attack kanan")
+		walk_sfx.stop()
+		attack_sfx.play()
 
 # Gerakkan peluru ke arah player
 func _process(delta):
@@ -58,6 +67,7 @@ func _process(delta):
 			# Jika peluru mengenai player
 			if bullet.global_position.distance_to(player.global_position) < 10:
 				bullet.visible = false  # Hilangkan peluru
+				attack_explode_sfx.play()
 				if player.has_method("decrease_health"):
 					player.decrease_health(3)
 

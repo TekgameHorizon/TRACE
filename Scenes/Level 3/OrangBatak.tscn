@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dg2unlj0u8oa0"]
+[gd_scene load_steps=9 format=3 uid="uid://dg2unlj0u8oa0"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/OrangBatak.gd" id="1_3hc03"]
 [ext_resource type="SpriteFrames" uid="uid://1nv7vw4b2nwr" path="res://AnimationSprite/Level 3/ORGBatak.tres" id="1_usk5h"]
+[ext_resource type="AudioStream" uid="uid://bbj7v7wmna2qc" path="res://Audio/Sfx/Enemy/Minion/SiBonekaKayu/Movement/Walkin.wav" id="3_bjrsx"]
+[ext_resource type="AudioStream" uid="uid://nvrpmcgau0ih" path="res://Audio/Sfx/Enemy/Minion/OrangBatak/Attack/Minion_OrgBatak_Atk.wav" id="4_j6wd0"]
+[ext_resource type="AudioStream" uid="uid://b55dh3syfd50k" path="res://Audio/Sfx/Enemy/Minion/OrangBatak/Proyektil/Proyektil_Explosion.wav" id="5_cac06"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2rqn"]
 radius = 4.0
@@ -45,6 +48,17 @@ shape = SubResource("CircleShape2D_ydvex")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
 shape = SubResource("CircleShape2D_ofs18")
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="WalkSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_bjrsx")
+
+[node name="AttackSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_j6wd0")
+
+[node name="AttackExplodeSFX" type="AudioStreamPlayer" parent="SFX/AttackSFX"]
+stream = ExtResource("5_cac06")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://46d7q2rw5m1y"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/home_menu.gd" id="1_2q47n"]
-[ext_resource type="AudioStream" uid="uid://cuvbpa6rb5pj4" path="res://Audio/Music/OverWorld/OverWorld_1.wav" id="2_ep8ru"]
+[ext_resource type="AudioStream" uid="uid://diaauv6mm77na" path="res://Audio/Music/Town/Town_1.wav" id="2_haxrk"]
 [ext_resource type="Texture2D" uid="uid://bq38s42ja2w5q" path="res://Asset/Menu/wallpaper.png" id="2_tdj4g"]
 [ext_resource type="Texture2D" uid="uid://cxkolk1rp1ja" path="res://Asset/Menu/judul.png" id="4_25dva"]
 [ext_resource type="Texture2D" uid="uid://ehgiwuks30b1" path="res://Asset/Menu/Horizone.png" id="5_qf1pw"]
@@ -24,8 +24,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2q47n")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_ep8ru")
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_haxrk")
 volume_db = -12.0
 autoplay = true
 bus = &"Music"

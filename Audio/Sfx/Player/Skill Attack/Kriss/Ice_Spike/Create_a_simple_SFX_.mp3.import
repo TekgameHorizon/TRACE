@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://xof78t17bwbd"
+path="res://.godot/imported/Create_a_simple_SFX_.mp3-f0ccdd5e1c3b66aef801b56ec60d0caf.mp3str"
+
+[deps]
+
+source_file="res://Audio/Sfx/Player/Skill Attack/Kriss/Ice_Spike/Create_a_simple_SFX_.mp3"
+dest_files=["res://.godot/imported/Create_a_simple_SFX_.mp3-f0ccdd5e1c3b66aef801b56ec60d0caf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

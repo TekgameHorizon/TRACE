@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://4k5ova2pytd"]
+[gd_scene load_steps=4 format=3 uid="uid://87jl0id3per6"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/level_select.gd" id="1_gstwj"]
 [ext_resource type="Texture2D" uid="uid://d2u5u2jixt0gk" path="res://Asset/Menu/map.png" id="2_qi7cu"]
@@ -49,6 +49,8 @@ offset_top = 574.0
 offset_right = 187.0
 offset_bottom = 600.0
 text = "LOST SUMATERA"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="lv1" to="." method="_on_lv_1_pressed"]
 [connection signal="pressed" from="lv2" to="." method="_on_lv_2_pressed"]
