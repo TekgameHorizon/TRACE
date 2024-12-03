@@ -9,11 +9,11 @@ var current_dir = "none"
 var is_dashing = false
 var dash_timer = 0.0
 
-var is_attacking = false  # Variabel untuk memeriksa apakah sedang menyerang
+var is_attacking = false # Variabel untuk memeriksa apakah sedang menyerang
 
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
-var health = 100
+var health = 10
 var player_alive = true
 
 @onready var attack_sfx = $SFX/AttackSFX
@@ -21,6 +21,7 @@ var player_alive = true
 
 func _ready():
 	$AnimatedSprite2D.play("Idle depan")
+	$AnimatedSprite2D.connect("animation_finished", Callable(self, "_on_attack_animation_finished"))
 
 	add_child(attack_timer)
 	attack_timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
@@ -38,18 +39,20 @@ func _physics_process(delta):
 		
 	move_and_slide()
 	
+	
 	enemy_attack()
 	if health <= 0:
 		player_alive = false
 		health = 0
 		print("player has been killed")
-		self.queue_free()
+		get_tree().change_scene_to_file("res://Scenes/Menu_Scenes/game_over.tscn")
 
 func player_movement(_delta):
 	if Input.is_action_just_pressed("Dash") and not is_dashing:
 		start_dash()
 
 	elif not is_dashing:
+
 		if Input.is_action_pressed("Kanan") or Input.is_action_just_pressed("Kanan"):
 	elif Input.is_action_just_pressed("attack"):
 		start_attack()
@@ -193,14 +196,23 @@ func start_attack():
 			object.enemy_take_damage(20)
 
 func _on_attack_animation_finished(anim_name):
-	if anim_name.begins_with("attack"):  # Jdika animasi yang selesai adalah animasi attack
-		is_attacking = false  # Setel status attacking kembali menjadi false
+	# Debugging: cek nama animasi yang selesai
+	print("Animation finished: " + anim_name)
+
+	# Mengecek apakah animasi yang selesai adalah animasi attack
+	if anim_name.begins_with("Attack"):  
+		# Debugging: cek status is_attacking sebelum dan sesudah
+		print("Before is_attacking:", is_attacking)
 		
-		# Pindah ke animasi idle setelah serangan
-		play_anim(0)  # Ini akan memutar animasi idle berdasarkan arah karakter yang terakhir
+		# Pastikan hanya mengubah status is_attacking setelah animasi serangan selesai
+		is_attacking = false
+		print("After is_attacking:", is_attacking)
 		
-		# Melepaskan koneksi sinyal yang sudah tidak diperlukan lagi
-		$AnimatedSprite2D.disconnect("animation_finished", Callable(self, "_on_attack_animation_finished"))
+		# Pindah ke animasi idle setelah serangan selesai
+		# Pastikan hanya play animasi idle jika tidak sedang bergerak atau menyerang
+		if not is_attacking:
+			play_anim(0)  # Ini akan memutar animasi idle berdasarkan arah karakter yang terakhir
+
 
 func player():
 	pass
@@ -231,6 +243,7 @@ func decrease_health(amount: int):
 		player_alive = false
 		health = 0
 		print("player has been killed")
+		get_tree().change_scene_to_file("res://Scenes/Menu_Scenes/game_over.tscn")
 		self.queue_free()
 	
 	healthbar.health = health
