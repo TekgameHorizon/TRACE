@@ -1,31 +1,7 @@
 extends CharacterBody2D
-
-@onready var idle_sfx = $SFX/IdleSFX
-@onready var move_sfx = $SFX/MoveSFX
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-func _physics_process(delta: float) -> void:
-pass
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-		idle_sfx.stop()
-		move_sfx.play()
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if !idle_sfx.playing:
-				idle_sfx.play()
-
-	move_and_slide()
-
 @onready var healthbar = $CanvasLayer/HealthBar
 
-var SPEED = 45
+var SPEED = 40
 var player_chase = false
 var player = null
 var is_attacking = false
@@ -63,7 +39,7 @@ func _physics_process(delta):
 			# Mengurangi darah pemain setiap detik
 			if !is_attacking:
 				attack_timer += delta
-				if attack_timer >= 1.0:  # Setiap detik
+				if attack_timer >= 3.0:  # Setiap detik
 					attack_timer = 0  # Reset timer
 					if player.has_method("decrease_health"):  # Pastikan player memiliki metode decrease_health
 						player.decrease_health(1)  # Mengurangi darah pemain 5 per detik
@@ -134,3 +110,4 @@ func enemy_take_damage(amount: int):
 		get_tree().change_scene_to_file("res://Scenes/Level_Scenes/level_2.tscn")  # Hancurkan enemy jika darah habis
 		
 	healthbar.health = enemy_health
+	
