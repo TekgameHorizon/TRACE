@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvf768jfac1gg"]
+
+[ext_resource type="SpriteFrames" uid="uid://1nv7vw4b2nwr" path="res://AnimationSprite/Level 3/ORGBatak.tres" id="2_7yxi7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2rqn"]
+radius = 5.0
+height = 10.0
+
+[node name="tembakan" type="CharacterBody2D"]
+
+[node name="tembakan" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_7yxi7")
+animation = &"Proyektil jalan"
+autoplay = "Proyektil jalan"
+frame = 5
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_s2rqn")

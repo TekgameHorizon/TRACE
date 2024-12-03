@@ -6,11 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_4slos"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4c76t"]
-radius = 6.0
-height = 20.0
+radius = 7.0
+height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8mo4a"]
-radius = 5.0
+radius = 4.79736
 
 [node name="PlayerSword" type="CharacterBody2D"]
 collision_layer = 3

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @onready var healthbar = $CanvasLayer/HealthBar
 
-var SPEED = 45
+var SPEED = 40
 var player_chase = false
 var player = null
 var is_attacking = false
@@ -39,7 +39,7 @@ func _physics_process(delta):
 			# Mengurangi darah pemain setiap detik
 			if !is_attacking:
 				attack_timer += delta
-				if attack_timer >= 1.0:  # Setiap detik
+				if attack_timer >= 3.0:  # Setiap detik
 					attack_timer = 0  # Reset timer
 					if player.has_method("decrease_health"):  # Pastikan player memiliki metode decrease_health
 						player.decrease_health(1)  # Mengurangi darah pemain 5 per detik
@@ -110,3 +110,4 @@ func enemy_take_damage(amount: int):
 		get_tree().change_scene_to_file("res://Scenes/Level_Scenes/level_2.tscn")  # Hancurkan enemy jika darah habis
 		
 	healthbar.health = enemy_health
+	

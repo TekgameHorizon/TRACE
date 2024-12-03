@@ -1,8 +1,8 @@
 extends CharacterBody2D
 @onready var healthbar = $CanvasLayer/HealthBar
 
-const SPEED = 120
-const DASH_SPEED = 300
+const SPEED = 100
+const DASH_SPEED = 200
 const DASH_TIME = 0.2
 
 var current_dir = "none"

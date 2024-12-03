@@ -12,7 +12,7 @@ height = 48.0
 radius = 44.0454
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kx8iw"]
-radius = 14.0
+radius = 17.0
 height = 46.0
 
 [node name="Kuntilanakkepala3" type="CharacterBody2D"]
@@ -21,6 +21,8 @@ script = ExtResource("1_mlda6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_yx0k8")
 animation = &"Attack depan"
+autoplay = "Attack depan"
+frame_progress = 0.781569
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
@@ -51,6 +53,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
+max_value = 250.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="CanvasLayer"]

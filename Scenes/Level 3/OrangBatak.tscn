@@ -1,12 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg2unlj0u8oa0"]
+[gd_scene load_steps=8 format=3 uid="uid://dg2unlj0u8oa0"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/OrangBatak.gd" id="1_3hc03"]
 [ext_resource type="SpriteFrames" uid="uid://1nv7vw4b2nwr" path="res://AnimationSprite/Level 3/ORGBatak.tres" id="1_usk5h"]
+[ext_resource type="PackedScene" uid="uid://dvf768jfac1gg" path="res://Scenes/Level 3/tembakan.tscn" id="2_2po40"]
 [ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="3_ano7d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2rqn"]
-radius = 9.0
-height = 36.0
+radius = 17.0
+height = 34.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ydvex"]
 radius = 133.06
@@ -17,14 +18,7 @@ radius = 79.0063
 [node name="OrangBatak" type="CharacterBody2D"]
 script = ExtResource("1_3hc03")
 
-[node name="tembakan" type="AnimatedSprite2D" parent="."]
-sprite_frames = ExtResource("1_usk5h")
-animation = &"Proyektil jalan"
-autoplay = "Proyektil jalan"
-frame_progress = 0.0382418
-
-[node name="tembakancollision" type="CollisionShape2D" parent="tembakan"]
-shape = SubResource("CapsuleShape2D_s2rqn")
+[node name="tembakan" parent="." instance=ExtResource("2_2po40")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_usk5h")
@@ -33,6 +27,7 @@ autoplay = "Idle depan"
 frame_progress = 0.271374
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
 shape = SubResource("CapsuleShape2D_s2rqn")
 
 [node name="DetectionArea" type="Area2D" parent="."]
@@ -45,6 +40,7 @@ shape = SubResource("CircleShape2D_ydvex")
 [node name="EnemyHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_ofs18")
 
 [node name="HealthBar" parent="." instance=ExtResource("3_ano7d")]

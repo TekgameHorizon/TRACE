@@ -45,6 +45,8 @@ shape = SubResource("CapsuleShape2D_2qltn")
 
 [node name="IdleSFX" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("3_usrtg")
+volume_db = -80.0
+pitch_scale = 0.01
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -58,6 +60,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
+max_value = 250.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="CanvasLayer"]

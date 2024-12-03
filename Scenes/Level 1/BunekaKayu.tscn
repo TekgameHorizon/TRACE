@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_y8umg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epi3p"]
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o0dja"]
 radius = 44.0454
@@ -23,6 +24,7 @@ position = Vector2(-1.90735e-06, -2)
 scale = Vector2(0.734375, 0.734375)
 sprite_frames = ExtResource("2_ioapi")
 animation = &"idle_down"
+autoplay = "idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
