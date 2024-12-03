@@ -97,6 +97,8 @@ func enemy_take_damage(amount: int):
 		enemy_health = 0
 		print("Enemy has been killed")
 		$AnimatedSprite2D.play("mati")
+		if player.has_method("tambah_darah"):  # Pastikan player memiliki metode decrease_health
+						player.tambah_darah(15)
 		call_deferred("queue_free")
 	
 	healthbar.health = enemy_health  
