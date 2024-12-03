@@ -5,15 +5,15 @@
 [ext_resource type="AudioStream" uid="uid://co3cxh4al1uob" path="res://Audio/Sfx/Enemy/Boss/BeguGanjang/Idle/Boss_BeguGanjar_IdleFixed.wav" id="3_usrtg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3510"]
-radius = 16.0
-height = 92.0
+radius = 17.0
+height = 52.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8go4r"]
 radius = 181.099
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kdliw"]
-radius = 15.0
-height = 92.0
+radius = 30.0
+height = 60.0
 
 [node name="BeguBanjar" type="CharacterBody2D"]
 collision_layer = 3
@@ -21,21 +21,23 @@ collision_mask = 113
 script = ExtResource("1_4tg1g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 28)
 shape = SubResource("CapsuleShape2D_o3510")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_yigim")
-animation = &"Move kiri"
-frame_progress = 0.809822
+animation = &"Attack kanan"
 
 [node name="DetectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(-1, 29)
 shape = SubResource("CircleShape2D_8go4r")
 
 [node name="EnemyHitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+position = Vector2(-2, 25)
 shape = SubResource("CapsuleShape2D_kdliw")
 
 [node name="SFX" type="Node" parent="."]
