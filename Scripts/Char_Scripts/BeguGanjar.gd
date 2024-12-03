@@ -106,6 +106,7 @@ func enemy_take_damage(amount: int):
 	if enemy_health <= 0:
 		enemy_health = 0
 		print("Enemy has been killed")
-		queue_free()  # Hancurkan enemy jika darah habis
+		queue_free()
+		get_tree().change_scene_to_file("res://Scenes/Level_Scenes/level_2.tscn")  # Hancurkan enemy jika darah habis
 		
 	healthbar.health = enemy_health
