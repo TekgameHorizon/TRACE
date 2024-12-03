@@ -3,9 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/player.gd" id="1_s814w"]
 [ext_resource type="SpriteFrames" uid="uid://ql35dppjfj86" path="res://AnimationSprite/Player/Pedang/Pedang.tres" id="2_tkiyo"]
 [ext_resource type="AudioStream" uid="uid://bskn7ap06a8o0" path="res://Audio/Sfx/Walk.mp3" id="3_6fybt"]
-[ext_resource type="AudioStream" uid="uid://bfp236l6b8gyo" path="res://Audio/Sfx/Player/Basic Attack/Sword_Attack/Attack_Sword.wav" id="4_q8cev"]
 [ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_4slos"]
-
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4c76t"]
 radius = 7.0
@@ -16,7 +14,7 @@ radius = 4.79736
 
 [node name="PlayerSword" type="CharacterBody2D"]
 collision_layer = 3
-collision_mask = 3
+collision_mask = 113
 script = ExtResource("1_s814w")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -25,14 +23,8 @@ zoom = Vector2(4, 4)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.59375, 0.59375)
 sprite_frames = ExtResource("2_tkiyo")
-
-animation = &"Attack kanan"
-autoplay = "Move depan"
 animation = &"Move kiri"
 autoplay = "Move depan"
-
-frame_progress = 0.40167
-
 offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -42,7 +34,6 @@ shape = SubResource("CapsuleShape2D_4c76t")
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-
 position = Vector2(0, -6)
 scale = Vector2(2.51424, 2.06306)
 shape = SubResource("CircleShape2D_8mo4a")
@@ -51,14 +42,13 @@ shape = SubResource("CircleShape2D_8mo4a")
 
 [node name="DamageTimer" type="Timer" parent="."]
 
-[node name="SFX" type="Node" parent="."]
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 0.76
 
-[node name="WalkSFX" type="AudioStreamPlayer" parent="SFX"]
+[node name="WalkSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6fybt")
 bus = &"Sfx"
 
-[node name="AttackSFX" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("4_q8cev")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_4slos")]
