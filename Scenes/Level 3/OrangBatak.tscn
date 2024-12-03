@@ -4,17 +4,26 @@
 [ext_resource type="SpriteFrames" uid="uid://1nv7vw4b2nwr" path="res://AnimationSprite/Level 3/ORGBatak.tres" id="1_usk5h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2rqn"]
-radius = 6.0
-height = 26.0
+radius = 4.0
+height = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ydvex"]
-radius = 44.0454
+radius = 133.06
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ofs18"]
-radius = 14.0357
+radius = 85.0059
 
 [node name="OrangBatak" type="CharacterBody2D"]
 script = ExtResource("1_3hc03")
+
+[node name="tembakan" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_usk5h")
+animation = &"Proyektil jalan"
+autoplay = "Proyektil jalan"
+frame_progress = 0.0382418
+
+[node name="tembakancollision" type="CollisionShape2D" parent="tembakan"]
+shape = SubResource("CapsuleShape2D_s2rqn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_usk5h")
