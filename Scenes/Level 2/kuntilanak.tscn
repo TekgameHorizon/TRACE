@@ -1,7 +1,7 @@
 [gd_scene load_steps=109 format=3 uid="uid://dajv2e2ejkvkd"]
 
 [ext_resource type="Texture2D" uid="uid://ccmusvlaad65e" path="res://Asset/Enemy/Level 2/Kuntilanak/attack/Minion_Kuntilanak_attack_up.png" id="1_gs8w4"]
-[ext_resource type="Script" path="res://Scenes/Level 2/kuntilanak.gd" id="1_jopcx"]
+[ext_resource type="Script" path="res://Scripts/Char_Scripts/kuntilanak.gd" id="1_jopcx"]
 [ext_resource type="Texture2D" uid="uid://cw76a22j0okpj" path="res://Asset/Enemy/Level 2/Kuntilanak/attack/Minion_Kuntilanak_attack_Down.png" id="2_a6mp7"]
 [ext_resource type="Texture2D" uid="uid://cbvkand8l83iu" path="res://Asset/Enemy/Level 2/Kuntilanak/attack/Minion_Kuntilanak_attack_Right.png" id="3_i4c42"]
 [ext_resource type="Texture2D" uid="uid://ckqmy7qj3el60" path="res://Asset/Enemy/Level 2/Kuntilanak/attack/Minion_Kuntilanak_attack_Left.png" id="4_me1qn"]

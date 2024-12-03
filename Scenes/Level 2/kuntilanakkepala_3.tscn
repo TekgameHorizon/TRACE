@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dti7qafloqpqp"]
 
-[ext_resource type="Script" path="res://Scenes/Level 2/kuntilanakkepala_3.gd" id="1_mlda6"]
+[ext_resource type="Script" path="res://Scripts/Char_Scripts/kuntilanakkepala_3.gd" id="1_mlda6"]
 [ext_resource type="SpriteFrames" uid="uid://cewm6biqqcj8w" path="res://AnimationSprite/Level 2/Kuntilanakkepala3.tres" id="1_yx0k8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k85xm"]

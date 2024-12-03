@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @onready var walk = $SFX/WalkSFX
+@onready var healthbar = $HealthBar
 
 var SPEED = 45
 var player_chase = false
@@ -12,9 +13,9 @@ var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
 var enemy_health = 100
 
 func _ready():
-	# Simpan posisi awal saat game dimulai
 	start_position = position
 	$AnimatedSprite2D.play("idle_down")
+	healthbar.init_health(enemy_health)
 
 func _physics_process(delta):
 	if player_chase:
@@ -30,7 +31,7 @@ func _physics_process(delta):
 
 		# Jika sudah berada dalam jarak serangan
 		elif distance_to_player <= ATTACK_DISTANCE:
-			$AnimatedSprite2D.play("attack")
+			$AnimatedSprite2D.play("attack_2")
 
 			# Mengurangi darah pemain setiap detik
 			if !is_attacking:
@@ -67,7 +68,7 @@ func _physics_process(delta):
 func _on_hitbox_area_entered(body: Node2D) -> void:
 	if body == player:
 		is_attacking = true
-		$AnimatedSprite2D.play("attack")
+		$AnimatedSprite2D.play("attack_2")
 		
 		# Tunggu animasi selesai
 		await $AnimatedSprite2D.animation_finished
@@ -96,3 +97,5 @@ func enemy_take_damage(amount: int):
 		enemy_health = 0
 		print("Enemy has been killed")
 		queue_free()  # Hancurkan enemy jika darah habis
+		
+	healthbar.health = enemy_health

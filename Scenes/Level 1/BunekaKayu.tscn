@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://btkdfeb104mc5"]
+[gd_scene load_steps=8 format=3 uid="uid://btkdfeb104mc5"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/BonekaKayu.gd" id="1_66wod"]
 [ext_resource type="SpriteFrames" uid="uid://coeksn2epug4g" path="res://AnimationSprite/Level 1/Boneka kayu/BodekaKayu.tres" id="2_ioapi"]
 [ext_resource type="AudioStream" uid="uid://bbj7v7wmna2qc" path="res://Audio/Sfx/Enemy/Minion/SiBonekaKayu/Movement/Walkin.wav" id="3_pyj2q"]
+[ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_y8umg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tspg3"]
 radius = 8.06226
@@ -11,7 +12,7 @@ radius = 8.06226
 radius = 44.0454
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bemk0"]
-radius = 8.42657
+radius = 16.6667
 
 [node name="BonekaKayu" type="CharacterBody2D"]
 collision_layer = 3
@@ -26,17 +27,7 @@ shape = SubResource("CircleShape2D_tspg3")
 position = Vector2(-1.90735e-06, -2)
 scale = Vector2(0.734375, 0.734375)
 sprite_frames = ExtResource("2_ioapi")
-animation = &"attack"
-frame_progress = 0.064105
-
-[node name="attackanim" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(1, -2)
-scale = Vector2(0.734375, 0.734375)
-sprite_frames = ExtResource("2_ioapi")
-animation = &"attack"
-frame = 2
-frame_progress = 1.0
+animation = &"idle_down"
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -49,6 +40,7 @@ shape = SubResource("CircleShape2D_o0dja")
 scale = Vector2(0.6, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
+position = Vector2(0, -2)
 scale = Vector2(1, 0.8)
 shape = SubResource("CircleShape2D_bemk0")
 
@@ -56,6 +48,12 @@ shape = SubResource("CircleShape2D_bemk0")
 
 [node name="WalkSFX" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("3_pyj2q")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_y8umg")]
+offset_left = -8.0
+offset_top = -19.0
+offset_right = 8.0
+offset_bottom = -17.0
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
