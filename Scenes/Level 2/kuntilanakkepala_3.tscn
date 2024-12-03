@@ -1,24 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://dti7qafloqpqp"]
+[gd_scene load_steps=7 format=3 uid="uid://dti7qafloqpqp"]
 
-[ext_resource type="Script" path="res://Scenes/Level 2/kuntilanakkepala_3.gd" id="1_mlda6"]
+[ext_resource type="Script" path="res://Scripts/Char_Scripts/kuntilanakkepala_3.gd" id="1_mlda6"]
 [ext_resource type="SpriteFrames" uid="uid://cewm6biqqcj8w" path="res://AnimationSprite/Level 2/Kuntilanakkepala3.tres" id="1_yx0k8"]
+[ext_resource type="PackedScene" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="3_n4nm2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k85xm"]
-radius = 11.0
-height = 40.0
+radius = 14.0
+height = 48.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8d7tt"]
 radius = 44.0454
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kx8iw"]
-height = 50.0
+radius = 17.0
+height = 46.0
 
 [node name="Kuntilanakkepala3" type="CharacterBody2D"]
 script = ExtResource("1_mlda6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_yx0k8")
-animation = &"Idle"
+animation = &"Attack depan"
+autoplay = "Attack depan"
+frame_progress = 0.781569
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
@@ -36,6 +40,30 @@ shape = SubResource("CircleShape2D_8d7tt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
 position = Vector2(0, 9)
 shape = SubResource("CapsuleShape2D_kx8iw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("3_n4nm2")]
+anchors_preset = -1
+anchor_left = 0.396701
+anchor_top = 0.935185
+anchor_right = 0.605035
+anchor_bottom = 0.941358
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 250.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.396701
+anchor_top = 0.896605
+anchor_right = 0.528646
+anchor_bottom = 0.932099
+text = "KUNTI KEPALA TIGA"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

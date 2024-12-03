@@ -1,20 +1,21 @@
 extends CharacterBody2D
 @onready var walk = $SFX/WalkSFX
+@onready var healthbar = $HealthBar
 
 var SPEED = 45
 var player_chase = false
 var player = null
 var is_attacking = false
-var ATTACK_DISTANCE = 20 # Jarak untuk memasuki serangan
-var START_DISTANCE = 14  # Jarak berhenti mengejar player
+var ATTACK_DISTANCE = 30 # Jarak untuk memasuki serangan
+var START_DISTANCE = 20  # Jarak berhenti mengejar player
 var start_position = Vector2()  # Posisi awal enemy
 var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
 var enemy_health = 100
 
 func _ready():
-	# Simpan posisi awal saat game dimulai
 	start_position = position
 	$AnimatedSprite2D.play("idle_down")
+	healthbar.init_health(enemy_health)
 
 func _physics_process(delta):
 	if player_chase:
@@ -35,7 +36,7 @@ func _physics_process(delta):
 			# Mengurangi darah pemain setiap detik
 			if !is_attacking:
 				attack_timer += delta
-				if attack_timer >= 1.0:  # Setiap detik
+				if attack_timer >= 3.0:  # Setiap detik
 					attack_timer = 0  # Reset timer
 					if player.has_method("decrease_health"):  # Pastikan player memiliki metode decrease_health
 						player.decrease_health(5)  # Mengurangi darah pemain 5 per detik
@@ -67,7 +68,7 @@ func _physics_process(delta):
 func _on_hitbox_area_entered(body: Node2D) -> void:
 	if body == player:
 		is_attacking = true
-		$AnimatedSprite2D.play("attack")
+		$AnimatedSprite2D.play("attack_2")
 		
 		# Tunggu animasi selesai
 		await $AnimatedSprite2D.animation_finished
@@ -95,4 +96,7 @@ func enemy_take_damage(amount: int):
 	if enemy_health <= 0:
 		enemy_health = 0
 		print("Enemy has been killed")
-		queue_free()  # Hancurkan enemy jika darah habis
+		$AnimatedSprite2D.play("mati")
+		call_deferred("queue_free")
+	
+	healthbar.health = enemy_health  

@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://4hqdh8geo27w"]
+[gd_scene load_steps=7 format=3 uid="uid://4hqdh8geo27w"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/player.gd" id="1_s814w"]
 [ext_resource type="SpriteFrames" uid="uid://ql35dppjfj86" path="res://AnimationSprite/Player/Pedang/Pedang.tres" id="2_tkiyo"]
 [ext_resource type="AudioStream" uid="uid://bskn7ap06a8o0" path="res://Audio/Sfx/Walk.mp3" id="3_6fybt"]
+[ext_resource type="PackedScene" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_4slos"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4c76t"]
-radius = 6.0
-height = 20.0
+radius = 7.0
+height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8mo4a"]
-radius = 5.0
+radius = 4.79736
 
 [node name="PlayerSword" type="CharacterBody2D"]
 collision_layer = 3
@@ -22,10 +23,8 @@ zoom = Vector2(4, 4)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.59375, 0.59375)
 sprite_frames = ExtResource("2_tkiyo")
-animation = &"Attack kanan"
+animation = &"Move kiri"
 autoplay = "Move depan"
-frame = 5
-frame_progress = 1.0
 offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -49,3 +48,18 @@ wait_time = 0.76
 [node name="WalkSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6fybt")
 bus = &"Sfx"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_4slos")]
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 289.0
+offset_bottom = 42.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 26.0
+offset_top = 48.0
+offset_right = 67.0
+offset_bottom = 71.0
+text = "IGRIS"

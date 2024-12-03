@@ -338,13 +338,37 @@ tile_set = SubResource("TileSet_eb5b1")
 [node name="PlayerSword" parent="." instance=ExtResource("2_b3kju")]
 position = Vector2(-101, -6)
 
-[node name="BonekaKayu" parent="." instance=ExtResource("3_t1xbv")]
-position = Vector2(289, 15)
-collision_mask = 115
-
 [node name="BeguBanjar" parent="." instance=ExtResource("4_7d204")]
 position = Vector2(-563, -659)
 scale = Vector2(0.7, 0.7)
+collision_mask = 115
+
+[node name="BonekaKayu" parent="." instance=ExtResource("3_t1xbv")]
+position = Vector2(291, 11)
+collision_mask = 115
+
+[node name="BonekaKayu7" parent="." instance=ExtResource("3_t1xbv")]
+position = Vector2(43, -698)
+collision_mask = 115
+
+[node name="BonekaKayu6" parent="." instance=ExtResource("3_t1xbv")]
+position = Vector2(90, -555)
+collision_mask = 115
+
+[node name="BonekaKayu5" parent="." instance=ExtResource("3_t1xbv")]
+position = Vector2(395, -619)
+collision_mask = 115
+
+[node name="BonekaKayu4" parent="." instance=ExtResource("3_t1xbv")]
+position = Vector2(513, -613)
+collision_mask = 115
+
+[node name="BonekaKayu3" parent="." instance=ExtResource("3_t1xbv")]
+position = Vector2(511, -240)
+collision_mask = 115
+
+[node name="BonekaKayu2" parent="." instance=ExtResource("3_t1xbv")]
+position = Vector2(291, -247)
 collision_mask = 115
 
 [node name="CLIFF" type="TileMapLayer" parent="."]

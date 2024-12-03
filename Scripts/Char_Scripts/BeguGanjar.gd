@@ -1,7 +1,7 @@
 extends CharacterBody2D
-@onready var walk = $SFX/IdleSFXSFX
+@onready var healthbar = $CanvasLayer/HealthBar
 
-var SPEED = 45
+var SPEED = 40
 var player_chase = false
 var player = null
 var is_attacking = false
@@ -9,13 +9,16 @@ var ATTACK_DISTANCE = 40 # Jarak untuk memasuki serangan
 var START_DISTANCE = 24  # Jarak berhenti mengejar player
 var start_position = Vector2()  # Posisi awal enemy
 var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
-var enemy_health = 100
+var enemy_health = 250
 var current_dir = "none"
 
 func _ready():
 	# Simpan posisi awal saat game dimulai
 	start_position = position
 	$AnimatedSprite2D.play("Idle depan")
+	healthbar.init_health(enemy_health)
+	$CanvasLayer/HealthBar.visible = false
+	$CanvasLayer/Label.visible = false
 
 func _physics_process(delta):
 	if player_chase:
@@ -36,10 +39,10 @@ func _physics_process(delta):
 			# Mengurangi darah pemain setiap detik
 			if !is_attacking:
 				attack_timer += delta
-				if attack_timer >= 1.0:  # Setiap detik
+				if attack_timer >= 3.0:  # Setiap detik
 					attack_timer = 0  # Reset timer
 					if player.has_method("decrease_health"):  # Pastikan player memiliki metode decrease_health
-						player.decrease_health(3)  # Mengurangi darah pemain 5 per detik
+						player.decrease_health(1)  # Mengurangi darah pemain 5 per detik
 		
 		else:
 			# Jika sudah cukup dekat dengan player, berhenti mengejar
@@ -92,9 +95,19 @@ func enemy():
 	pass
 
 func enemy_take_damage(amount: int):
+	if not $CanvasLayer/HealthBar.visible:
+		$CanvasLayer/HealthBar.visible = true
+	
+	if not $CanvasLayer/Label.visible:
+		$CanvasLayer/Label.visible = true
+	
 	enemy_health -= amount
 	print("Enemy health: " + str(enemy_health))
 	if enemy_health <= 0:
 		enemy_health = 0
 		print("Enemy has been killed")
-		queue_free()  # Hancurkan enemy jika darah habis
+		queue_free()
+		get_tree().change_scene_to_file("res://Scenes/Level_Scenes/level_2.tscn")  # Hancurkan enemy jika darah habis
+		
+	healthbar.health = enemy_health
+	
