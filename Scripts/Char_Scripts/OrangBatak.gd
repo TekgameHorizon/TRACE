@@ -100,3 +100,6 @@ func enemy_take_damage(amount: int):
 		queue_free()  # Hancurkan enemy jika darah habis
 		
 	healthbar.health = enemy_health
+
+func enemy():
+	pass

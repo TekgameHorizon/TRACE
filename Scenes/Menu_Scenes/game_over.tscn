@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://mwucv1gm5r0u"]
+[gd_scene load_steps=5 format=3 uid="uid://btbbdpg32ry1v"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/game_over.gd" id="1_2dml4"]
 [ext_resource type="Texture2D" uid="uid://byd0861ovnw0l" path="res://Asset/Menu/Game_Over-removebg-preview.png" id="2_nd3xe"]
