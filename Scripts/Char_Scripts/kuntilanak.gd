@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var healthbar = $HealthBar
 
 var SPEED = 45
 var player_chase = false
@@ -8,11 +9,13 @@ var ATTACK_DISTANCE = 20 # Jarak untuk memasuki serangan
 var START_DISTANCE = 14  # Jarak berhenti mengejar player
 var start_position = Vector2()  # Posisi awal enemy
 var attack_timer = 0.0  # Timer untuk menghitung detik saat menyerang
+var enemy_health = 100
 
 func _ready():
 	# Simpan posisi awal saat game dimulai
 	start_position = position
 	$AnimatedSprite2D.play("Idle depan")
+	healthbar.init_health(enemy_health)
 
 func _physics_process(delta):
 	if player_chase:
@@ -83,3 +86,14 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 	
 func enemy():
 	pass
+	
+
+func enemy_take_damage(amount: int):
+	enemy_health -= amount
+	print("Enemy health: " + str(enemy_health))
+	if enemy_health <= 0:
+		enemy_health = 0
+		print("Enemy has been killed")
+		queue_free()  # Hancurkan enemy jika darah habis
+	
+	healthbar.health = enemy_health
