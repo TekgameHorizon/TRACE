@@ -3,14 +3,14 @@
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/player.gd" id="1_s814w"]
 [ext_resource type="SpriteFrames" uid="uid://ql35dppjfj86" path="res://AnimationSprite/Player/Pedang/Pedang.tres" id="2_tkiyo"]
 [ext_resource type="AudioStream" uid="uid://bskn7ap06a8o0" path="res://Audio/Sfx/Walk.mp3" id="3_6fybt"]
-[ext_resource type="AudioStream" uid="uid://b4p4tac8yvg4d" path="res://Audio/Sfx/Player/Basic Attack/Sword_Attack/Attack_Sword.wav" id="4_q8cev"]
+[ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_4slos"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4c76t"]
-radius = 6.0
-height = 20.0
+radius = 7.0
+height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8mo4a"]
-radius = 5.0
+radius = 4.79736
 
 [node name="PlayerSword" type="CharacterBody2D"]
 collision_layer = 3
@@ -23,10 +23,8 @@ zoom = Vector2(4, 4)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.59375, 0.59375)
 sprite_frames = ExtResource("2_tkiyo")
-animation = &"Attack kanan"
+animation = &"Move kiri"
 autoplay = "Move depan"
-frame = 5
-frame_progress = 1.0
 offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -37,7 +35,7 @@ shape = SubResource("CapsuleShape2D_4c76t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(0, -6)
-scale = Vector2(1.88, 1.76)
+scale = Vector2(2.51424, 2.06306)
 shape = SubResource("CircleShape2D_8mo4a")
 
 [node name="CoolDown" type="Timer" parent="."]
@@ -47,13 +45,21 @@ shape = SubResource("CircleShape2D_8mo4a")
 [node name="attack_timer" type="Timer" parent="."]
 wait_time = 0.76
 
-[node name="Audio" type="Node" parent="."]
-
-[node name="SFX" type="Node" parent="Audio"]
-
-[node name="WalkSFX" type="AudioStreamPlayer" parent="Audio/SFX"]
+[node name="WalkSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6fybt")
 bus = &"Sfx"
 
-[node name="Attack" type="AudioStreamPlayer" parent="Audio/SFX"]
-stream = ExtResource("4_q8cev")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_4slos")]
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 289.0
+offset_bottom = 42.0
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 26.0
+offset_top = 48.0
+offset_right = 67.0
+offset_bottom = 71.0
+text = "IGRIS"

@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=45 format=3 uid="uid://coeksn2epug4g"]
+[gd_resource type="SpriteFrames" load_steps=55 format=3 uid="uid://coeksn2epug4g"]
 
 [ext_resource type="Texture2D" uid="uid://bemehtdv17hyq" path="res://Asset/Enemy/Level 1/Minion1_BonekaKayu/Attack/Minion_PinokiyoKW_Attack_AllDirection.png" id="1_ququj"]
 [ext_resource type="Texture2D" uid="uid://bik022y3m61i7" path="res://Asset/Enemy/Level 1/Minion1_BonekaKayu/Support/Tornado.png" id="2_x8a2l"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bukwx242lg41p" path="res://Asset/Enemy/Level 1/Minion1_BonekaKayu/Idle/Minion_PinokiyoKW_Idle_Right.png" id="4_xi1pd"]
 [ext_resource type="Texture2D" uid="uid://dee8kubroydfk" path="res://Asset/Enemy/Level 1/Minion1_BonekaKayu/Idle/Minion_PinokiyoKW_Idle_Up.png" id="5_w2vmn"]
 [ext_resource type="Texture2D" uid="uid://brdu5jm338q8f" path="res://Asset/Enemy/Level 1/Minion1_BonekaKayu/Movement/Minion_PinokiyoKW_Movement_Down.png" id="6_854qr"]
+[ext_resource type="Texture2D" uid="uid://clstfrdw0p4pt" path="res://Asset/Enemy/Level 1/Minion1_BonekaKayu/Mati/Mati_Universal.png" id="6_reey3"]
 [ext_resource type="Texture2D" uid="uid://cjbipld3voagg" path="res://Asset/Enemy/Level 1/Minion1_BonekaKayu/Movement/Minion_PinokiyoKW_Movement_Right.png" id="7_g8bwp"]
 [ext_resource type="Texture2D" uid="uid://dbonoc6eo4yqj" path="res://Asset/Enemy/Level 1/Minion1_BonekaKayu/Movement/Minion_PinokiyoKW_Movement_Up.png" id="8_wpqvf"]
 
@@ -80,6 +81,42 @@ region = Rect2(128, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_w6im7"]
 atlas = ExtResource("5_w2vmn")
 region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa0d6"]
+atlas = ExtResource("6_reey3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1p3q"]
+atlas = ExtResource("6_reey3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsc6e"]
+atlas = ExtResource("6_reey3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18l4f"]
+atlas = ExtResource("6_reey3")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyvf2"]
+atlas = ExtResource("6_reey3")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfchc"]
+atlas = ExtResource("6_reey3")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p10k7"]
+atlas = ExtResource("6_reey3")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpyeu"]
+atlas = ExtResource("6_reey3")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scsyi"]
+atlas = ExtResource("6_reey3")
+region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a2qcs"]
 atlas = ExtResource("6_854qr")
@@ -232,6 +269,38 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pa0d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1p3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsc6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18l4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyvf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfchc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p10k7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpyeu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scsyi")
+}],
+"loop": false,
+"name": &"mati",
 "speed": 5.0
 }, {
 "frames": [{
