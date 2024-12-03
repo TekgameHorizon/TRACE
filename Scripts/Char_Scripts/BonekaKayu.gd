@@ -31,7 +31,7 @@ func _physics_process(delta):
 
 		# Jika sudah berada dalam jarak serangan
 		elif distance_to_player <= ATTACK_DISTANCE:
-			$AnimatedSprite2D.play("attack_2")
+			$AnimatedSprite2D.play("attack")
 
 			# Mengurangi darah pemain setiap detik
 			if !is_attacking:

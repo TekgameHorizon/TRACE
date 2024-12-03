@@ -1,4 +1,5 @@
 extends CharacterBody2D
+@onready var healthbar = $CanvasLayer/HealthBar
 
 const SPEED = 120
 const DASH_SPEED = 300
@@ -20,6 +21,7 @@ func _ready():
 	$AnimatedSprite2D.play("Idle depan")
 	add_child(attack_timer)
 	attack_timer.connect("timeout", Callable(self, "_on_attack_timer_timeout"))
+	healthbar.init_health(health)
 
 func _physics_process(delta):
 	if is_dashing:
@@ -193,7 +195,9 @@ func decrease_health(amount: int):
 		health = 0
 		print("Player has been killed")
 		self.queue_free()
-		
+	
+	healthbar.health = health
+
 func _on_attack_timer_timeout() :
 	is_attacking = false
 	var hitbox = $HitBox/CollisionShape2D

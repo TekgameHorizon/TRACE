@@ -5,14 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="3_n4nm2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k85xm"]
-radius = 13.0
-height = 44.0
+radius = 14.0
+height = 48.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8d7tt"]
 radius = 44.0454
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kx8iw"]
-radius = 13.0
+radius = 14.0
 height = 46.0
 
 [node name="Kuntilanakkepala3" type="CharacterBody2D"]
@@ -20,7 +20,7 @@ script = ExtResource("1_mlda6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_yx0k8")
-animation = &"Attack belakang"
+animation = &"Attack depan"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
