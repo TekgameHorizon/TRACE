@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_4slos"]
 [ext_resource type="AudioStream" uid="uid://bfp236l6b8gyo" path="res://Audio/Sfx/Player/Basic Attack/Sword_Attack/Attack_Sword.wav" id="4_q8cev"]
 
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4c76t"]
 radius = 7.0
 height = 24.0
@@ -51,8 +50,9 @@ wait_time = 0.76
 stream = ExtResource("3_6fybt")
 bus = &"Sfx"
 
-[node name="AttackSFX" type="AudioStreamPlayer" parent="SFX"]
+[node name="SFX#AttackSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_q8cev")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_4slos")]
