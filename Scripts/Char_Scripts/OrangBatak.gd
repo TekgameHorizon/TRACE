@@ -106,6 +106,8 @@ func enemy_take_damage(amount: int):
 	if enemy_health <= 0:
 		enemy_health = 0
 		print("Enemy has been killed")
+		if player.has_method("tambah_darah"):  # Pastikan player memiliki metode decrease_health
+						player.tambah_darah(15)
 		queue_free()  # Hancurkan enemy jika darah habis
 		
 	healthbar.health = enemy_health

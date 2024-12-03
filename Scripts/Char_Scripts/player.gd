@@ -203,6 +203,13 @@ func decrease_health(amount: int):
 	
 	healthbar.health = health
 
+func tambah_darah(amount: int):
+	health += amount
+	print("Player health: " + str(health))
+	
+	healthbar.health = health
+
+
 func _on_attack_timer_timeout() :
 	is_attacking = false
 	var hitbox = $HitBox/CollisionShape2D

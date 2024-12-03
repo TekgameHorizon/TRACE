@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://ql35dppjfj86" path="res://AnimationSprite/Player/Pedang/Pedang.tres" id="2_tkiyo"]
 [ext_resource type="AudioStream" uid="uid://bskn7ap06a8o0" path="res://Audio/Sfx/Walk.mp3" id="3_6fybt"]
 [ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_4slos"]
-[ext_resource type="AudioStream" uid="uid://b4p4tac8yvg4d" path="res://Audio/Sfx/Player/Basic Attack/Sword_Attack/Attack_Sword.wav" id="4_q8cev"]
+[ext_resource type="AudioStream" uid="uid://bfp236l6b8gyo" path="res://Audio/Sfx/Player/Basic Attack/Sword_Attack/Attack_Sword.wav" id="4_q8cev"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4c76t"]
 radius = 7.0
@@ -46,6 +46,13 @@ shape = SubResource("CircleShape2D_8mo4a")
 [node name="attack_timer" type="Timer" parent="."]
 wait_time = 0.76
 
+[node name="WalkSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6fybt")
+bus = &"Sfx"
+
+[node name="SFX#AttackSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_q8cev")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_4slos")]
@@ -60,13 +67,3 @@ offset_top = 48.0
 offset_right = 67.0
 offset_bottom = 71.0
 text = "IGRIS"
-
-[node name="SFX" type="Node" parent="."]
-
-[node name="WalkSFX" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("3_6fybt")
-bus = &"Sfx"
-
-[node name="AttackSFX" type="AudioStreamPlayer" parent="SFX"]
-stream = ExtResource("4_q8cev")
-bus = &"Sfx"
