@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://4hqdh8geo27w"]
+[gd_scene load_steps=9 format=3 uid="uid://4hqdh8geo27w"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/player.gd" id="1_s814w"]
 [ext_resource type="SpriteFrames" uid="uid://ql35dppjfj86" path="res://AnimationSprite/Player/Pedang/Pedang.tres" id="2_tkiyo"]
 [ext_resource type="AudioStream" uid="uid://bskn7ap06a8o0" path="res://Audio/Sfx/Walk.mp3" id="3_6fybt"]
 [ext_resource type="PackedScene" uid="uid://dv4eoxn41kg84" path="res://Scenes/Character_Scenes/healthBar/healthBar.tscn" id="4_4slos"]
 [ext_resource type="AudioStream" uid="uid://bfp236l6b8gyo" path="res://Audio/Sfx/Player/Basic Attack/Sword_Attack/Attack_Sword.wav" id="4_q8cev"]
+[ext_resource type="Script" path="res://Scenes/Character_Scenes/Player/label_2.gd" id="6_3dm8r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4c76t"]
 radius = 7.0
@@ -67,3 +68,11 @@ offset_top = 48.0
 offset_right = 67.0
 offset_bottom = 71.0
 text = "IGRIS"
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 985.0
+offset_top = 35.0
+offset_right = 1099.0
+offset_bottom = 58.0
+text = "Enemies kill : 0"
+script = ExtResource("6_3dm8r")
