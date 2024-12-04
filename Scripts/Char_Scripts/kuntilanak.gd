@@ -39,7 +39,7 @@ func _physics_process(delta):
 				if attack_timer >= 2.7:  # Setiap detik
 					attack_timer = 0  # Reset timer
 					if player.has_method("decrease_health"):  # Pastikan player memiliki metode decrease_health
-						player.decrease_health(3)  # Mengurangi darah pemain 5 per detik
+						player.decrease_health(5)  # Mengurangi darah pemain 5 per detik
 		
 		else:
 			# Jika sudah cukup dekat dengan player, berhenti mengejar
@@ -95,7 +95,7 @@ func enemy_take_damage(amount: int):
 		enemy_health = 0
 		print("Enemy has been killed")
 		if player.has_method("tambah_darah"):  # Pastikan player memiliki metode decrease_health
-						player.tambah_darah(12)
+						player.tambah_darah(10)
 						player._on_score_updated(1)
 		queue_free()  # Hancurkan enemy jika darah habis
 	

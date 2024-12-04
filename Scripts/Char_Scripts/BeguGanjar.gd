@@ -39,7 +39,7 @@ func _physics_process(delta):
 			# Mengurangi darah pemain setiap detik
 			if !is_attacking:
 				attack_timer += delta
-				if attack_timer >= 2.7:  # Setiap detik
+				if attack_timer >= 2.6:  # Setiap detik
 					attack_timer = 0  # Reset timer
 					if player.has_method("decrease_health"):  # Pastikan player memiliki metode decrease_health
 						player.decrease_health(13)  # Mengurangi darah pemain 5 per detik

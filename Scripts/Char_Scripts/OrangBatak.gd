@@ -64,7 +64,7 @@ func _process(delta):
 			if bullet.global_position.distance_to(player.global_position) < 10:
 				bullet.visible = false  # Hilangkan peluru
 				if player.has_method("decrease_health"):
-					player.decrease_health(3)
+					player.decrease_health(5)
 				
 				# Mulai animasi "Attack kanan" dan tunggu selama 2 detik
 				$AnimatedSprite2D.play("Attack kanan")
@@ -98,7 +98,7 @@ func enemy_take_damage(amount: int):
 		enemy_health = 0
 		print("Enemy has been killed")
 		if player.has_method("tambah_darah"):  # Pastikan player memiliki metode decrease_health
-						player.tambah_darah(12)
+						player.tambah_darah(10)
 						player._on_score_updated(1)
 		queue_free()  # Hancurkan enemy jika darah habis
 		
