@@ -1,5 +1,4 @@
 extends CharacterBody2D
-@onready var walk = $SFX/WalkSFX
 @onready var healthbar = $HealthBar
 
 var SPEED = 45
@@ -79,13 +78,10 @@ func _on_hitbox_area_entered(body: Node2D) -> void:
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	player = body
 	player_chase = true
-	if !walk.playing:
-				walk.play()
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	player = null
 	player_chase = false
-	walk.stop()
 	
 func enemy():
 	pass

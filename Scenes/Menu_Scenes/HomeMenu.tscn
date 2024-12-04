@@ -1,10 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://46d7q2rw5m1y"]
+[gd_scene load_steps=21 format=3 uid="uid://46d7q2rw5m1y"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/home_menu.gd" id="1_2q47n"]
 [ext_resource type="AudioStream" uid="uid://cuvbpa6rb5pj4" path="res://Audio/Music/OverWorld/OverWorld_1.wav" id="2_ep8ru"]
 [ext_resource type="Texture2D" uid="uid://bq38s42ja2w5q" path="res://Asset/Menu/wallpaper.png" id="2_tdj4g"]
 [ext_resource type="Texture2D" uid="uid://cxkolk1rp1ja" path="res://Asset/Menu/judul.png" id="4_25dva"]
 [ext_resource type="Texture2D" uid="uid://ehgiwuks30b1" path="res://Asset/Menu/Horizone.png" id="5_qf1pw"]
+[ext_resource type="Texture2D" uid="uid://jr0drwxmvq0l" path="res://Asset/Menu/button/start 2.png" id="6_its6g"]
+[ext_resource type="Texture2D" uid="uid://bkylcoyetmns8" path="res://Asset/Menu/button/start 3.png" id="7_x1sgf"]
+[ext_resource type="Texture2D" uid="uid://m86w0g82gehr" path="res://Asset/Menu/button/start button.png" id="8_w0y06"]
+[ext_resource type="Texture2D" uid="uid://dqlk7hmv61ybj" path="res://Asset/Menu/button/quit 2.png" id="9_8ah5a"]
+[ext_resource type="Texture2D" uid="uid://dww4jhr7qm8qc" path="res://Asset/Menu/button/quit 1.png" id="9_vmnoo"]
+[ext_resource type="Texture2D" uid="uid://c2kisaawlh6t4" path="res://Asset/Menu/button/quit 3.png" id="10_4q7e5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_br1g7"]
 texture = ExtResource("2_tdj4g")
@@ -14,6 +20,24 @@ texture = ExtResource("4_25dva")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6tv8g"]
 texture = ExtResource("5_qf1pw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_02kxe"]
+texture = ExtResource("6_its6g")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_prn0y"]
+texture = ExtResource("7_x1sgf")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v5irc"]
+texture = ExtResource("8_w0y06")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qkqv3"]
+texture = ExtResource("9_8ah5a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b2e44"]
+texture = ExtResource("10_4q7e5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yjtru"]
+texture = ExtResource("9_vmnoo")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -26,7 +50,6 @@ script = ExtResource("1_2q47n")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ep8ru")
-volume_db = -12.0
 autoplay = true
 bus = &"Music"
 
@@ -59,25 +82,25 @@ anchor_bottom = 0.351852
 theme_override_styles/panel = SubResource("StyleBoxTexture_6tv8g")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 75.0
-offset_top = -35.0
-offset_right = 444.0
-offset_bottom = 31.0
-grow_vertical = 2
-alignment = 1
-
-[node name="Start" type="Button" parent="VBoxContainer"]
+[node name="Start" type="Button" parent="."]
 layout_mode = 2
-text = "START"
+offset_left = 116.0
+offset_top = 301.0
+offset_right = 398.0
+offset_bottom = 380.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_02kxe")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_prn0y")
+theme_override_styles/normal = SubResource("StyleBoxTexture_v5irc")
 
-[node name="EXIT" type="Button" parent="VBoxContainer"]
+[node name="EXIT" type="Button" parent="."]
 layout_mode = 2
-text = "EXIT"
+offset_left = 117.0
+offset_top = 393.0
+offset_right = 395.0
+offset_bottom = 467.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_qkqv3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b2e44")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yjtru")
 
-[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/EXIT" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="EXIT" to="." method="_on_exit_pressed"]
