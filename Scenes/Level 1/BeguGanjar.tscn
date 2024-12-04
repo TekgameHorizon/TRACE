@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dws633rjxqvui"]
+[gd_scene load_steps=9 format=3 uid="uid://dws633rjxqvui"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/BeguGanjar.gd" id="1_4tg1g"]
 [ext_resource type="SpriteFrames" uid="uid://slhhc8x4j6ws" path="res://AnimationSprite/Level 1/BeguGanjar/BeguGanjar.tres" id="2_yigim"]
@@ -15,6 +15,9 @@ radius = 181.099
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qltn"]
 radius = 22.0
 height = 104.0
+
+[sub_resource type="SystemFont" id="SystemFont_l53yw"]
+font_names = PackedStringArray("Aceh")
 
 [node name="BeguBanjar" type="CharacterBody2D"]
 collision_layer = 3
@@ -66,9 +69,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.394097
-anchor_top = 0.899691
+anchor_top = 0.908951
 anchor_right = 0.5
-anchor_bottom = 0.935185
+anchor_bottom = 0.944445
+theme_override_fonts/font = SubResource("SystemFont_l53yw")
 text = "BEGU GANJANG"
 metadata/_edit_use_anchors_ = true
 

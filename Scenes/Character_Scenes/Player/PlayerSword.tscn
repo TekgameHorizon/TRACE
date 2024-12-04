@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4hqdh8geo27w"]
+[gd_scene load_steps=10 format=3 uid="uid://4hqdh8geo27w"]
 
 [ext_resource type="Script" path="res://Scripts/Char_Scripts/player.gd" id="1_s814w"]
 [ext_resource type="SpriteFrames" uid="uid://ql35dppjfj86" path="res://AnimationSprite/Player/Pedang/Pedang.tres" id="2_tkiyo"]
@@ -13,6 +13,10 @@ height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8mo4a"]
 radius = 4.79736
+
+[sub_resource type="SystemFont" id="SystemFont_jv4ga"]
+font_names = PackedStringArray("Aceh")
+subpixel_positioning = 0
 
 [node name="PlayerSword" type="CharacterBody2D"]
 collision_layer = 3
@@ -57,16 +61,17 @@ stream = ExtResource("4_q8cev")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_4slos")]
-offset_left = 25.0
+offset_left = 36.0
 offset_top = 25.0
-offset_right = 289.0
-offset_bottom = 42.0
+offset_right = 275.0
+offset_bottom = 29.0
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 26.0
-offset_top = 48.0
-offset_right = 67.0
-offset_bottom = 71.0
+offset_left = 35.0
+offset_top = 37.0
+offset_right = 76.0
+offset_bottom = 60.0
+theme_override_fonts/font = SubResource("SystemFont_jv4ga")
 text = "IGRIS"
 
 [node name="Label2" type="Label" parent="CanvasLayer"]

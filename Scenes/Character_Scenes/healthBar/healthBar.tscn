@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dv4eoxn41kg84"]
+[gd_scene load_steps=8 format=3 uid="uid://dv4eoxn41kg84"]
 
 [ext_resource type="Script" path="res://Scenes/Character_Scenes/healthBar/health_bar.gd" id="1_q6b8g"]
+[ext_resource type="Texture2D" path="res://Asset/Menu/button/hp.png" id="2_m5r2i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b7hrx"]
 
@@ -22,6 +23,9 @@ shadow_offset = Vector2(0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kea2m"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mbu5y"]
+texture = ExtResource("2_m5r2i")
 
 [node name="HealthBar" type="ProgressBar"]
 z_index = 1
@@ -49,5 +53,14 @@ show_percentage = false
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="outline" type="Panel" parent="."]
+z_index = -3
+layout_mode = 0
+offset_left = -4.0
+offset_top = -5.0
+offset_right = 244.0
+offset_bottom = 9.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_mbu5y")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

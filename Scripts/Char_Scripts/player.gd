@@ -196,6 +196,7 @@ func decrease_health(amount: int):
 		player_alive = false
 		health = 0
 		print("Player has been killed")
+		get_tree().change_scene_to_file("res://Scenes/Menu_Scenes/game_over.tscn")
 		self.queue_free()
 	
 	healthbar.health = health

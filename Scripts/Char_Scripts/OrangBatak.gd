@@ -64,7 +64,7 @@ func _process(delta):
 			if bullet.global_position.distance_to(player.global_position) < 10:
 				bullet.visible = false  # Hilangkan peluru
 				if player.has_method("decrease_health"):
-					player.decrease_health(3)
+					player.decrease_health(4)
 				
 				# Mulai animasi "Attack kanan" dan tunggu selama 2 detik
 				$AnimatedSprite2D.play("Attack kanan")

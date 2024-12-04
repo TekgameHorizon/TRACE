@@ -1,5 +1,4 @@
 extends CharacterBody2D
-@onready var walk = $SFX/WalkSFX
 @onready var healthbar = $HealthBar
 
 var SPEED = 45
@@ -79,13 +78,10 @@ func _on_hitbox_area_entered(body: Node2D) -> void:
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	player = body
 	player_chase = true
-	if !walk.playing:
-				walk.play()
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	player = null
 	player_chase = false
-	walk.stop()
 	
 func enemy():
 	pass
@@ -98,7 +94,7 @@ func enemy_take_damage(amount: int):
 		print("Enemy has been killed")
 		$AnimatedSprite2D.play("mati")
 		if player.has_method("tambah_darah"):  # Pastikan player memiliki metode decrease_health
-						player.tambah_darah(12)
+						player.tambah_darah(10)
 						player._on_score_updated(1)
 		call_deferred("queue_free")
 	

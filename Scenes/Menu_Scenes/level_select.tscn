@@ -1,10 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://4k5ova2pytd"]
+[gd_scene load_steps=10 format=3 uid="uid://4k5ova2pytd"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/level_select.gd" id="1_gstwj"]
 [ext_resource type="Texture2D" uid="uid://d2u5u2jixt0gk" path="res://Asset/Menu/map.png" id="2_qi7cu"]
+[ext_resource type="AudioStream" uid="uid://ghifb15ebsn7" path="res://Audio/Music/Town/Town_2.wav" id="3_05t7u"]
+[ext_resource type="Texture2D" path="res://Asset/Menu/button/back .png" id="3_pyfna"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7n4mj"]
 texture = ExtResource("2_qi7cu")
+
+[sub_resource type="SystemFont" id="SystemFont_48jxj"]
+font_names = PackedStringArray("Agenor Neue")
+
+[sub_resource type="SystemFont" id="SystemFont_dksl0"]
+font_names = PackedStringArray("Agenor Neue")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_34cj4"]
+texture = ExtResource("3_pyfna")
+
+[sub_resource type="SystemFont" id="SystemFont_0rwp5"]
+font_names = PackedStringArray("Agenor Neue")
 
 [node name="level_select" type="Control"]
 layout_mode = 3
@@ -30,6 +44,7 @@ offset_left = 288.0
 offset_top = 108.0
 offset_right = 419.0
 offset_bottom = 167.0
+theme_override_fonts/font = SubResource("SystemFont_48jxj")
 text = "North
 Sumatera"
 
@@ -39,16 +54,35 @@ offset_left = 578.0
 offset_top = 271.0
 offset_right = 709.0
 offset_bottom = 330.0
+theme_override_fonts/font = SubResource("SystemFont_dksl0")
 text = "Middle
 Sumatera"
 
+[node name="back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 955.0
+offset_top = 571.0
+offset_right = 1064.0
+offset_bottom = 623.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_34cj4")
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 55.0
-offset_top = 574.0
-offset_right = 187.0
-offset_bottom = 600.0
+offset_left = 70.0
+offset_top = 556.0
+offset_right = 382.0
+offset_bottom = 611.0
+theme_override_fonts/normal_font = SubResource("SystemFont_0rwp5")
+theme_override_font_sizes/mono_font_size = 1
+theme_override_font_sizes/normal_font_size = 37
 text = "LOST SUMATERA"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_05t7u")
+volume_db = -12.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="lv1" to="." method="_on_lv_1_pressed"]
 [connection signal="pressed" from="lv2" to="." method="_on_lv_2_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://btbbdpg32ry1v"]
+[gd_scene load_steps=8 format=3 uid="uid://btbbdpg32ry1v"]
 
 [ext_resource type="Script" path="res://Scripts/Menu/game_over.gd" id="1_2dml4"]
 [ext_resource type="Texture2D" uid="uid://byd0861ovnw0l" path="res://Asset/Menu/Game_Over-removebg-preview.png" id="2_nd3xe"]
+[ext_resource type="AudioStream" uid="uid://xodxof8etqgo" path="res://Audio/Music/Boss/Boss_Fight_2.wav" id="3_skgm4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhr3v"]
-bg_color = Color(0.609982, 0.621114, 0.36565, 1)
+bg_color = Color(0.760637, 0.861197, 0.97485, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4us0g"]
-bg_color = Color(0.59658, 0.634605, 0.207683, 1)
+bg_color = Color(0.269505, 0.66595, 0.708427, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -16,6 +17,12 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+
+[sub_resource type="SystemFont" id="SystemFont_td31i"]
+font_names = PackedStringArray("Aceh")
+
+[sub_resource type="SystemFont" id="SystemFont_qpf44"]
+font_names = PackedStringArray("Aceh")
 
 [node name="Game_Over" type="Control"]
 layout_mode = 3
@@ -43,10 +50,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -171.0
-offset_right = 253.0
-offset_bottom = 95.0
+offset_left = -202.5
+offset_top = -133.0
+offset_right = 202.5
+offset_bottom = 133.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4us0g")
@@ -65,11 +72,20 @@ theme_override_constants/separation = 20
 
 [node name="BM2" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Back To MAP"
+size_flags_horizontal = 0
+theme_override_fonts/font = SubResource("SystemFont_td31i")
+text = "Back To Level"
 
 [node name="Exite" type="Button" parent="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_qpf44")
 text = "Back To Home"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_skgm4")
+volume_db = -12.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/BM2" to="." method="_on_bg_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/VBoxContainer/HBoxContainer/Exite" to="." method="_on_exite_pressed"]
