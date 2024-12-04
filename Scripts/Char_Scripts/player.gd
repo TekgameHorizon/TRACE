@@ -1,10 +1,12 @@
 extends CharacterBody2D
 @onready var healthbar = $CanvasLayer/HealthBar
+@onready var score_label = $CanvasLayer/Label2
 
 const SPEED = 100
 const DASH_SPEED = 200
 const DASH_TIME = 0.2
 
+var player_score = 0
 var current_dir = "none"
 var is_dashing = false
 var dash_timer = 0.0
@@ -210,3 +212,7 @@ func _on_attack_timer_timeout() :
 	var hitbox = $HitBox/CollisionShape2D
 	hitbox.position.y = -8
 	hitbox.position.x = 0
+
+func _on_score_updated(points):
+	player_score += points
+	score_label.update_score(player_score)
